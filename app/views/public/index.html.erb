@@ -29,15 +29,19 @@
 		</div>
 		<div class='col-4'>
 			<p class='h5'>Up and Coming Communities</p>
-			<div class='card'>
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item">An item</li>
-					<li class="list-group-item">A second item</li>
-					<li class="list-group-item">A third item</li>
-					<li class="list-group-item">A fourth item</li>
-					<li class="list-group-item">And a fifth one</li>
-				</ul>
-			</div>
+				<div class='card'>
+					<% if !@communities.nil? %>
+						<%= render partial: 'communities/list', locals: { communities: @communities } %>
+					<% else %>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">An item</li>
+							<li class="list-group-item">A second item</li>
+							<li class="list-group-item">A third item</li>
+							<li class="list-group-item">A fourth item</li>
+							<li class="list-group-item">And a fifth one</li>
+						</ul>
+					<% end %>
+				</div>
 			<%= link_to 'View All', communities_path, class: 'btn btn-primary mt-4' %>
 		</div>
 </div>

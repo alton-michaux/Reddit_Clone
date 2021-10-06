@@ -1,6 +1,8 @@
 <% if account_signed_in? %>
 
-	<%= link_to 'New Community', new_community_path %>
+	<div class='float-end'>
+		<%= link_to 'New Community', new_community_path, class:'btn btn-outline-primary' %>
+	</div>
 	
 <% else %>
 
