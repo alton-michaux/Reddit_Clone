@@ -1,12 +1,20 @@
-<% if @communities.size > 0 %>
-    <% @communities.each do |community| %>
+<% if account_signed_in? %>
 
-        <div class='card'>
-            <h3><%= link_to community.name, community_path %></h3>
-            <%= simple_format community.bio %>
-        </div>
-
-    <% end %>
+	<%= link_to 'New Community', new_community_path %>
+	
 <% else %>
-<p>No Communities</p>
+
+<% end %>
+
+	<% if @communities.size > 0 %>
+		<% @communities.each do |community| %>
+
+			<div class='card'>
+				<h3><%= link_to community.name, community_path(id: community.id) %></h3>
+				<%= simple_format community.rules %>
+			</div>
+
+		<% end %>
+	<% else %>
+		<p>No Communities</p>
 <% end %>

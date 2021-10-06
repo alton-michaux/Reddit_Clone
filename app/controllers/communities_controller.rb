@@ -14,4 +14,12 @@ class CommunitiesController < ApplicationController
   end
 
   def create; end
+
+  def destroy
+    @community.destroy
+    respond_to do |format|
+      format.html { redirect_to communities_url, notice: 'Community was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
 end
