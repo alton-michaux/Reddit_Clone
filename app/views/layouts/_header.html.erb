@@ -1,11 +1,17 @@
 <div class='container'>
 	<div class='row'>
 		<div class='col-12'>
-			<div class='float-end'>
-				<%= link_to 'Log In', new_account_session_path, class:'btn btn-outline-primary' %>
-				<%= link_to 'Sign Up', new_account_registration_path, class:'btn btn-outline-primary' %>
-			</div>
-		<p class='h3'>Reddit Clone</p>
+			<% if account_signed_in? %>
+				<div class='float-end'>
+					<%= button_to 'Log Out', destroy_account_session_path, method: :delete, class:'btn btn-outline-primary' %>
+				</div>
+			<% else %>
+				<div class='float-end'>
+					<%= link_to 'Log In', new_account_session_path, class:'btn btn-outline-primary' %>
+					<%= link_to 'Sign Up', new_account_registration_path, class:'btn btn-outline-primary' %>
+				</div>
+			<% end %>
+		<p class='h3'><%= link_to 'Reddit Clone', root_path, class: 'navbar-brand' %></p>
 		</div>
 	</div>
 </div>
