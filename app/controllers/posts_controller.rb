@@ -3,7 +3,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_account!, except: %i[index show]
   before_action :set_post, only: [:show]
-#   before_action :post_values, only: [:create]
+  #   before_action :post_values, only: [:create]
 
   def index
     @posts = Post.all
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def post_values
