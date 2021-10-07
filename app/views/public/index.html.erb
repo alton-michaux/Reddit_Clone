@@ -25,7 +25,9 @@
 	</div>
 	<div class='row'>
 		<div class='col-8'>
-			<%= render partial: 'posts/list', locals: { posts: @posts } %>
+			<div class='card p-3'>
+				<%= render partial: 'posts/list', locals: { posts: @posts } %>
+			</div>
 		</div>
 		<div class='col-4'>
 			<p class='h5'>Up and Coming Communities</p>

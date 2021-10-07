@@ -2,11 +2,20 @@
 
 <h2><%= @community.name %></h2>
 
-<% @posts.each do |post| %>
-	<h4><%= link_to post.title, community_post_path(@community, post) %></h4>
-	<p><%= truncate post.body, length: 200 %></p>
+<% if @community.posts.nil? %>
+	<p>No posts yet</p>
+<% else %>
+	<div class='card p-3'>
+		<% @posts.each do |post| %>
+			<h4><%= link_to post.title, community_post_path(@community, post) %></h4>
+			<p><%= truncate post.body, length: 200 %></p>
+		<% end %>
+	</div>
 <% end %>
 
-<small>
-	<%= simple_format @community.rules %>
-</small>
+<div class='float-end'>
+	<small>
+		<em><strong>Community rules:</strong>
+		<%= simple_format @community.rules %></em>
+	</small>
+</div>
