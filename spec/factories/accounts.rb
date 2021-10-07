@@ -9,6 +9,7 @@ FactoryBot.define do
     f.username { Faker::Internet.username }
     f.bio { Faker::Lorem.paragraph(sentence_count: 3) }
     f.email { Faker::Internet.email }
+    f.password { 'admin1225' }
 
   end
 end
