@@ -1,0 +1,5 @@
+<% @posts.each do |post| %>
+    <h4><%= link_to post.title, community_post_path(post.community.id, post.id) %></h4>
+    <p><%= truncate post.body, length: 200 %></p>
+    <p>Posted in <%= post.community.name.to_s %> by <%= post.account.first_name.to_s %>
+<% end %>
