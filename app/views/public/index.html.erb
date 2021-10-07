@@ -25,7 +25,7 @@
 	</div>
 	<div class='row'>
 		<div class='col-8'>
-			Left column(wide)
+			<%= render partial: 'posts/list', locals: { posts: @posts } %>
 		</div>
 		<div class='col-4'>
 			<p class='h5'>Up and Coming Communities</p>
