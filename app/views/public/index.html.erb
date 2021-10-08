@@ -1,7 +1,7 @@
 <div class='container'>
-	<div class='row'>
+	<div class='row text-danger mt-2'>
 		<p class='h4'>
-			Trending Today
+			Trending: <%= Date.today.strftime('%B %e, %Y') %>
 		</p>
 		<div class='col-sm-3'>
 			Trending Topic 1
@@ -25,7 +25,9 @@
 	</div>
 	<div class='row'>
 		<div class='col-8'>
-			<%= render partial: 'posts/list', locals: { posts: @posts } %>
+			<div class='card p-3 bg-secondary'>
+				<%= render partial: 'posts/list', locals: { posts: @posts } %>
+			</div>
 		</div>
 		<div class='col-4'>
 			<p class='h5'>Up and Coming Communities</p>
@@ -34,14 +36,14 @@
 						<%= render partial: 'communities/list', locals: { communities: @communities } %>
 					<% else %>
 						<ul class="list-group list-group-flush">
-							<li class="list-group-item">An item</li>
-							<li class="list-group-item">A second item</li>
-							<li class="list-group-item">A third item</li>
-							<li class="list-group-item">A fourth item</li>
-							<li class="list-group-item">And a fifth one</li>
+							<li class="list-group-item text-danger">An item</li>
+							<li class="list-group-item text-danger">A second item</li>
+							<li class="list-group-item text-danger">A third item</li>
+							<li class="list-group-item text-danger">A fourth item</li>
+							<li class="list-group-item text-danger">And a fifth one</li>
 						</ul>
 					<% end %>
 				</div>
-			<%= link_to 'View All', communities_path, class: 'btn btn-primary mt-4' %>
+			<%= link_to 'View All', communities_path, class: 'text-danger btn btn-outline-danger mt-4' %>
 		</div>
 </div>

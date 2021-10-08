@@ -3,22 +3,22 @@
 
 		<%= form_for @community do |f| %>
 
-			<div class='form-group'>
+			<div class='form-group text-danger'>
 				<%= label_tag :name %>
 				<%= f.text_field :name, class: 'form-control' %>
 			</div>
 
-			<div class='form-group'>
+			<div class='form-group text-danger'>
 				<%= label_tag :url %>
 				<%= f.text_field :url, class: 'form-control' %>
 			</div>
 
-			<div class='form-group'>
+			<div class='form-group text-danger'>
 				<%= label_tag :rules %>
 				<%= f.text_area :rules, class: 'form-control' %>
 			</div>
 
-			<%= f.submit 'Submit', class:'btn btn-primary' %>
+			<%= f.submit 'Submit', class:'btn btn-danger' %>
 
 		<% end %>
 

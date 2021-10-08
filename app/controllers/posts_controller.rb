@@ -2,14 +2,15 @@
 
 class PostsController < ApplicationController
   before_action :authenticate_account!, except: %i[index show]
-  before_action :set_post, only: [:show]
-  #   before_action :post_values, only: [:create]
+  before_action :set_post, only: %i[show edit update destroy]
 
   def index
     @posts = Post.all
   end
 
   def show; end
+
+  def edit; end
 
   def new
     @community = Community.find(params[:community_id])
@@ -29,6 +30,19 @@ class PostsController < ApplicationController
     else
       @community = Community.find(params[:community_id])
       render :new
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @post.update(post_values)
+        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.json { render :show, status: :ok, location: @post }
+      else
+        pp "update error: #{@post.errors.to_a} \n error on: #{@post.as_json}"
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
     end
   end
 
