@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   def show; end
 
-	def edit; end
+  def edit; end
 
   def new
     @community = Community.find(params[:community_id])

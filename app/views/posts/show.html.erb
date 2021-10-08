@@ -1,17 +1,17 @@
-<h2><%= @post.title %></h2>
+<h2 class='text-danger'><%= @post.title %></h2>
 
-<%= simple_format @post.body %>
+<%= simple_format @post.body, class:'text-danger' %>
 
 <div class='row'>
-	<div class='col-1 float-left'>
+	<div class='col-1 float-left text-danger'>
 		Upvotes: <%= @post.upvotes %> 
 	</div>
-	<div class='col-1 float right'>
+	<div class='col-1 float right text-danger'>
 		Downvotes: <%= @post.downvotes %>
 	</div>
 </div>
 
 <div class='col-sm-3'>
-	<%= link_to 'Back', community_posts_path, class: 'btn btn-outline-primary' %>
-	<%= link_to 'Edit', edit_community_post_path(@post.community_id, @post.id), class: 'btn btn-primary' %>
+	<%= link_to 'Back', community_posts_path, class: 'btn btn-secondary' %>
+	<%= link_to 'Edit', edit_community_post_path(@post.community_id, @post.id), class: 'btn btn-danger' %>
 </div>

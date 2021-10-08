@@ -3,17 +3,17 @@
 
 		<%= form_for [@community, @post] do |f| %>
 
-			<div class='form-group'>
+			<div class='form-group text-danger'>
 				<%= label_tag :title %>
 				<%= f.text_field :title, class: 'form-control' %>
 			</div>
 
-			<div class='form-group'>
+			<div class='form-group text-danger'>
 				<%= label_tag :body %>
 				<%= f.text_field :body, class: 'form-control' %>
 			</div>
 
-			<%= f.submit 'Submit', class:'btn btn-primary' %>
+			<%= f.submit 'Submit', class:'btn btn-danger' %>
 
 		<% end %>
 

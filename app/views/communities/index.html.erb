@@ -4,8 +4,8 @@
 			<% if @communities.size > 0 %>
 				<% @communities.each do |community| %>
 
-					<div class='card p-3'>
-						<h3><%= link_to community.name, community_path(id: community.id) %></h3>
+					<div class='card p-3 bg-secondary'>
+						<h3><%= link_to community.name, community_path(id: community.id), class:'text-danger text-decoration-none' %></h3>
 						<%= simple_format community.rules %>
 					</div>
 
@@ -18,7 +18,7 @@
 		<% if account_signed_in? %>
 
 			<div class='float-end col-sm-3'>
-				<%= link_to 'New Community', new_community_path, class:'btn btn-outline-primary' %>
+				<%= link_to 'New Community', new_community_path, class:'btn btn-outline-danger text-danger' %>
 			</div>
 			
 		<% else %>

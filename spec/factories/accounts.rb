@@ -10,6 +10,5 @@ FactoryBot.define do
     f.bio { Faker::Lorem.paragraph(sentence_count: 3) }
     f.email { Faker::Internet.email }
     f.password { 'admin1225' }
-
   end
 end
