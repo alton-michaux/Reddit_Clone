@@ -29,4 +29,3 @@ RSpec.describe Post, type: :model do
     expect(subject.community_id).to_not be_nil
   end
 end
-
