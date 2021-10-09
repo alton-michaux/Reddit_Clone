@@ -33,5 +33,13 @@ RSpec.describe 'Accounts', type: :request do
         sign_out subject
       end
     end
+    describe 'get edit_path' do
+      it 'renders the edit view' do
+        sign_in subject
+        get edit_account_registration_path
+        expect(response).to render_template('devise/registrations/edit')
+        sign_out subject
+      end
+    end
   end
 end
