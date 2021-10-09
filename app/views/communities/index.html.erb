@@ -4,7 +4,7 @@
 			<% if @communities.size > 0 %>
 				<% @communities.each do |community| %>
 
-					<div class='card p-3 bg-secondary'>
+					<div class='card p-3 bg-light'>
 						<h3><%= link_to community.name, community_path(id: community.id), class:'text-danger text-decoration-none' %></h3>
 						<%= simple_format community.rules %>
 					</div>
