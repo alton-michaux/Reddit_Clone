@@ -2,13 +2,13 @@
 	<div class='row'>
 		<div class='col-12'>
 			<% if account_signed_in? %>
-				<div class='float-end'>
+				<div class='float-end mt-1 shadow-sm'>
 					<%= button_to 'Log Out', destroy_account_session_path, method: :delete, class:'btn text-dark btn-danger' %>
 				</div>
 			<% else %>
 				<div class='float-end'>
-					<%= link_to 'Log In', new_account_session_path, class:'text-dark btn btn-outline-danger' %>
-					<%= link_to 'Sign Up', new_account_registration_path, class:'text-dark btn btn-outline-danger' %>
+					<%= link_to 'Log In', new_account_session_path, class:'text-dark btn btn-danger' %>
+					<%= link_to 'Sign Up', new_account_registration_path, class:'text-dark btn btn-danger' %>
 				</div>
 			<% end %>
 		<p class='h3r'><%= link_to 'Reddit Clone', root_path, class: 'navbar-brand text-dark text-decoration-none' %></p>
