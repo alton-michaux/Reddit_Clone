@@ -1,24 +1,26 @@
-# README
+# Reddit Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a clone of the popular blog app reddit.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version: 2.6.5
 
-* System dependencies
+* System dependencies:
+    - PopperJS
+    - Rails/actioncable
+    - Rails/activestorage
+    - Rails/ujs
+    - Rails/webpacker
+    - Bootstrap
+    - JQuery
+    - Turbolinks
 
 * Configuration
 
-* Database creation
+* Test Database:
+    - Run `bin/rails db:reset` to populate fake data
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Tests:
+    - Run `rspec`
+    - 38 examples, 0 failures
