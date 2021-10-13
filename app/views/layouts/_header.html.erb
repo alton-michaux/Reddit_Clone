@@ -1,4 +1,3 @@
-
 <div class='container'>
 	<div class='row'>
 		<div class='col-12'>
@@ -9,7 +8,7 @@
 					</a>
 
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<%= button_to 'Profile','', class:'dropdown-item' %>
+						<%= button_to 'Profile', profile_path(current_account.id), method: :get, class:'dropdown-item' %>
 						<%= button_to 'Settings', edit_account_registration_path, method: :get, class:'dropdown-item' %>
 						<%= button_to 'Log Out', destroy_account_session_path, method: :delete, class:'dropdown-item' %>
 					</ul>

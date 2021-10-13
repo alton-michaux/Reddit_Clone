@@ -1,0 +1,12 @@
+<div class='row'>
+    <div class='col-sm-8 p-3 bg-light'>
+        <%= render partial: 'posts/list', locals: { posts: @posts } %>
+    </div>
+    <div class='col-sm-4 p-3 bg-light'>
+        <p class='h4'><%= @profile.full_name %></p>
+        <%= @profile.username %>
+        <%= simple_format @profile.bio %>
+
+        <p> Joined on: <%= @profile.created_at.strftime('%B %e, %Y')%> </p>
+    </div>
+</div>

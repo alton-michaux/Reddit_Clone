@@ -9,6 +9,11 @@ class PublicController < ApplicationController
     @posts = Post.order(id: :desc).limit(20)
   end
 
+  def profile
+    @profile = Account.find(params[:id])
+    @posts = @profile.posts
+  end
+
   private
 
   def catch_not_found(e)
