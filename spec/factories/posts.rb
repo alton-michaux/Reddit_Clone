@@ -9,7 +9,7 @@ FactoryBot.define do
 
     f.title { Faker::Book.title }
     f.body { Faker::Lorem.paragraph(sentence_count: 4) }
-    f.upvotes { Faker::Number.within(range: 0.0..100_00.0) }
-    f.downvotes { Faker::Number.within(range: 0.0..100_00.0) }
+    f.upvotes { Faker::Number.within(range: 0..100_0) }
+    f.downvotes { Faker::Number.within(range: 0..100_0) }
   end
 end
