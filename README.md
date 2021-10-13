@@ -2,9 +2,9 @@
 
 This is a clone of the popular blog app reddit.
 
-Things you may want to cover:
-
 * Ruby version: 2.6.5
+
+* Rails version: 6.1.4.1
 
 * System dependencies:
     - PopperJS
