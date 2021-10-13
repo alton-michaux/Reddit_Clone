@@ -4,9 +4,9 @@
     </div>
     <div class='col-sm-4 p-3 bg-light'>
         <p class='h4'><%= @profile.full_name %></p>
-        <%= @profile.username %>
-        <%= simple_format @profile.bio %>
+        <p class='mt-2'><strong>Username:</strong> <%= @profile.username %></p>
+        <p class='mt-2'><strong>Bio:</strong><%= simple_format @profile.bio %></p>
 
-        <p> Joined on: <%= @profile.created_at.strftime('%B %e, %Y')%> </p>
+        <p> <strong>Joined on:</strong> <%= @profile.created_at.strftime('%B %e, %Y')%> </p>
     </div>
 </div>
