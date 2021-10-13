@@ -1,9 +1,10 @@
+
 <div class='container'>
 	<div class='row'>
 		<div class='col-12'>
 			<% if account_signed_in? %>
 				<div class="dropdown float-end mt-1 shadow-sm">
-					<a class="btn btn-danger dropdown-toggle p-1" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+					<a class="btn btn-danger dropdown-toggle p-2 m-2" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
 						<%= current_account.full_name %>
 					</a>
 
@@ -19,7 +20,7 @@
 					<%= link_to 'Sign Up', new_account_registration_path, class:'text-dark btn btn-danger' %>
 				</div>
 			<% end %>
-		<p><%= link_to 'Reddit Clone', root_path, class: 'navbar-brand text-dark text-decoration-none' %></p>
+		<p><%= link_to 'Reddit Clone', root_path, class: 'navbar-brand text-light text-decoration-none' %></p>
 		</div>
 	</div>
 </div>
