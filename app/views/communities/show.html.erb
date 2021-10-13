@@ -1,21 +1,25 @@
-<%= link_to 'New Community Post', new_community_post_path(@community), class: 'btn btn-danger text-dark float-end' %>
-
-<h2 class='text-danger'><%= @community.name %></h2>
-
-<% if @community.posts.nil? %>
-	<p class='text-danger'>No posts yet</p>
-<% else %>
-	<div class='card p-3'>
-		<% @posts.each do |post| %>
-			<h4><%= link_to post.title, community_post_path(@community, post), class:'text-danger text-decoration-none' %></h4>
-			<p class='text-danger'><%= truncate post.body, length: 200 %></p>
-		<% end %>
+<div class='p-1'>
+	<div class='p-2'>
+		<%= link_to 'New Community Post', new_community_post_path(@community), class: 'btn btn-danger text-dark float-end' %>
 	</div>
-<% end %>
 
-<div class='float-end'>
-	<small class='text-danger'>
-		<em><strong>Community rules:</strong>
-		<%= simple_format @community.rules %></em>
-	</small>
+	<h2 class='text-danger'><%= @community.name %></h2>
+
+	<% if @community.posts.nil? %>
+		<p class='text-danger'>No posts yet</p>
+	<% else %>
+		<div class='card p-3'>
+			<% @posts.each do |post| %>
+				<h4><%= link_to post.title, community_post_path(@community, post), class:'text-danger text-decoration-none' %></h4>
+				<p class='text-danger'><%= truncate post.body, length: 200 %></p>
+			<% end %>
+		</div>
+	<% end %>
+
+	<div class='float-end'>
+		<small class='text-danger'>
+			<em><strong>Community rules:</strong>
+			<%= simple_format @community.rules %></em>
+		</small>
+	</div>
 </div>
