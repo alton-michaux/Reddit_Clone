@@ -16,8 +16,6 @@ Things you may want to cover:
     - JQuery
     - Turbolinks
 
-* Configuration
-
 * Test Database:
     - Run `bin/rails db:reset` to populate fake data
 
