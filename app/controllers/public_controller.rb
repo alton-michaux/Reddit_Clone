@@ -12,6 +12,7 @@ class PublicController < ApplicationController
   def profile
     @profile = Account.find(params[:id])
     @posts = @profile.posts
+    @communities = @profile.communities
   end
 
   private

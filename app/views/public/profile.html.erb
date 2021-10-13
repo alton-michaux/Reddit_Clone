@@ -8,5 +8,9 @@
         <p class='mt-2'><strong>Bio:</strong><%= simple_format @profile.bio %></p>
 
         <p> <strong>Joined on:</strong> <%= @profile.created_at.strftime('%B %e, %Y')%> </p>
+
+        <% if !current_account.communities.nil? %>
+            <p class='mt-2'><strong>Admin in these communities:</strong> <%= render partial: 'communities/list', locals: { communities: current_account.communities } %></p>
+        <% end %>
     </div>
 </div>
