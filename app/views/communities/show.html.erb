@@ -12,6 +12,7 @@
 			<% @posts.each do |post| %>
 				<h4><%= link_to post.title, community_post_path(@community, post), class:'text-danger text-decoration-none' %></h4>
 				<p class='text-danger'><%= truncate post.body, length: 200 %></p>
+				<small class='text-dark'>Posted by <%= post.account.first_name %> on <%= post.created_at.strftime('%B %d, %Y')%></small>
 			<% end %>
 		</div>
 	<% end %>
