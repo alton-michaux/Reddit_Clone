@@ -25,6 +25,16 @@
       </div>
 
       <div class="text-danger form-group col-3 p-2">
+        <%= f.label :username %><br />
+        <%= f.text_field :username, class:'form-control' %>
+      </div>
+
+      <div class="text-danger form-group col-3 p-2">
+        <%= f.label :bio %><br />
+        <%= f.text_area :bio, class:'form-control' %>
+      </div>
+
+      <div class="text-danger form-group col-3 p-2">
         <%= f.label :password %> <small class='text-light'>(leave blank if no change)</small><br />
         <%= f.password_field :password, autocomplete: "new-password", class:'form-control' %>
       </div>

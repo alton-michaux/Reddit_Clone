@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   devise_for :accounts
+  get 'u/:id' => 'public#profile', as: :profile
 
   resources :communities do
     resources :posts

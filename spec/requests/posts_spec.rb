@@ -51,7 +51,10 @@ RSpec.describe 'posts', type: :request do
     it 'saves a new entry and redirects to the show path for the entry' do
       sign_in subject
       post_attributes = FactoryBot.attributes_for(:post)
-      expect { post community_posts_path(post_attributes[:community_id]), params: { community: post_attributes[:community_id], post: post_attributes } }.to change(Post, :count).by(1)
+      expect do
+        post community_posts_path(post_attributes[:community_id]),
+             params: { community: post_attributes[:community_id], post: post_attributes }
+      end.to change(Post, :count).by(1)
       expect(response).to redirect_to community_path(post_attributes[:community_id])
       sign_out subject
     end
@@ -62,7 +65,8 @@ RSpec.describe 'posts', type: :request do
       post_attributes = FactoryBot.attributes_for(:post)
       post_attributes.delete(:title)
       expect do
-        post community_posts_path(post_attributes[:community_id]), params: { community: post_attributes[:community_id], post: post_attributes }
+        post community_posts_path(post_attributes[:community_id]),
+             params: { community: post_attributes[:community_id], post: post_attributes }
       end.to_not change(Post, :count)
       expect(response).to render_template(:new)
       sign_out subject
