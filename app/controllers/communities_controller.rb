@@ -4,6 +4,7 @@ class CommunitiesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
   rescue_from StandardError, with: :catch_no_method
   before_action :authenticate_account!, except: %i[index show]
+  before_action :set_community, only: %i[show edit update destroy]
 
   def index
     @communities = Community.all
@@ -26,6 +27,12 @@ class CommunitiesController < ApplicationController
       format.html { redirect_to communities_url, notice: 'Community was successfully destroyed.' }
       format.json { head :no_content }
 		end
+  end
+
+  private
+
+  def set_community
+    @community = Community.find(params[:id])
   end
 
   def catch_not_found(e)
