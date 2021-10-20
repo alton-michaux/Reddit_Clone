@@ -1,0 +1,23 @@
+<div class='row p-1'>
+	<h2 class='text-danger'><%= @community.name %></h2>
+
+	<div class='col-8'>
+		<% if @community.posts.nil? %>
+			<p class='text-danger'>No posts yet</p>
+		<% else %>
+			<div class='card p-3'>
+				<% @posts.each do |post| %>
+					<h4><%= link_to post.title, community_post_path(@community, post), class:'text-dark text-decoration-none' %></h4>
+					<p class='text-dark float-right'><%= truncate post.body, length: 200 %></p>
+					<small class='text-danger'>Posted by <%= post.account.first_name %> on <%= post.created_at.strftime('%B %d, %Y')%></small>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+		
+	<div class='col-4 text-danger float-end'>
+		<p class='row'><%= pluralize @subscriber_count, 'member' %> in this community</p>
+		<em class='row'><strong>Community rules:</strong><%= simple_format @community.rules %></em>
+		<%= link_to 'New Community Post', new_community_post_path(@community), class: 'row btn btn-danger text-light' %>
+	</div>
+</div>

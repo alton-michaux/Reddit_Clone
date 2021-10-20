@@ -1,7 +1,7 @@
-<div class='container'>
-	<div class='row'>
-		<p class='h4'>
-			Trending Today
+<% unless account_signed_in? %>
+	<div class='row text-danger mt-2'>
+		<p class='h4 text-light'>
+			Trending: <%= Date.today.strftime('%B %e, %Y') %>
 		</p>
 		<div class='col-sm-3'>
 			Trending Topic 1
@@ -16,28 +16,35 @@
 			Trending Topic 4
 		</div>
 	</div>
-	<div class='row mt-4'>
-		<div class='col'>
-				<p class='h4'>
-					Popular Posts
-				</p>
+<% end %>
+<div class='row'>
+	<div class='col p-1'>
+			<p class='h4 text-light'>
+				Recent Posts
+			</p>
+	</div>
+</div>
+<div class='row shadow-sm p-3'>
+	<div class='col-8'>
+		<div class='card p-3 bg-light'>
+			<%= render partial: 'posts/list', locals: { posts: @posts } %>
 		</div>
 	</div>
-	<div class='row'>
-		<div class='col-8'>
-			Left column(wide)
-		</div>
-		<div class='col-4'>
-			<p class='h5'>Up and Coming Communities</p>
+	<div class='col-4'>
+		<p class='h5 text-light mb-2'>Up and Coming Communities</p>
 			<div class='card'>
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item">An item</li>
-					<li class="list-group-item">A second item</li>
-					<li class="list-group-item">A third item</li>
-					<li class="list-group-item">A fourth item</li>
-					<li class="list-group-item">And a fifth one</li>
-				</ul>
+				<% if !@communities.nil? %>
+					<%= render partial: 'communities/list', locals: { communities: @communities } %>
+				<% else %>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item text-danger">An item</li>
+						<li class="list-group-item text-danger">A second item</li>
+						<li class="list-group-item text-danger">A third item</li>
+						<li class="list-group-item text-danger">A fourth item</li>
+						<li class="list-group-item text-danger">And a fifth one</li>
+					</ul>
+				<% end %>
 			</div>
-			<%= link_to 'View All', communities_path, class: 'btn btn-primary mt-4' %>
-		</div>
+		<%= link_to 'View All', communities_path, class: 'text-light btn btn-danger mt-4 shadow-sm' %>
+	</div>
 </div>

@@ -10,15 +10,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class='bg-dark'>
     <%= render partial: 'layouts/header' %>
-    <div class='container'>
-      <div class='row'>
-        <div class='col-sm-12'>
-          <%= yield %>
+      <div class='container bg-dark'>
+        <div class='row'>
+          <div class='col-sm-12 pt-4'>
+            <%= yield %>
+          </div>
         </div>
       </div>
-    </div>
     <%= render partial: 'layouts/footer' %>
   </body>
 </html>

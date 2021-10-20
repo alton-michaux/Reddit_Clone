@@ -1,20 +1,28 @@
-<% if account_signed_in? %>
+<div class='p-1'>
+	<div class='row'>
+		<div class='col-sm-9'>
+			<% if @communities.size > 0 %>
+				<% @communities.each do |community| %>
 
-	<%= link_to 'New Community', new_community_path %>
-	
-<% else %>
+					<div class='card p-3 bg-light'>
+						<h3><%= link_to community.name, community_path(id: community.id), class:'text-danger text-decoration-none' %></h3>
+						<%= simple_format community.rules %>
+					</div>
 
-<% end %>
+				<% end %>
+			<% else %>
+				<p>No Communities</p>
+			<% end %>
+		</div>
+		
+		<% if account_signed_in? %>
 
-	<% if @communities.size > 0 %>
-		<% @communities.each do |community| %>
-
-			<div class='card'>
-				<h3><%= link_to community.name, community_path(id: community.id) %></h3>
-				<%= simple_format community.rules %>
+			<div class='float-end col-sm-3 p-2'>
+				<%= link_to 'New Community', new_community_path, class:'btn btn-outline-danger text-danger' %>
 			</div>
+			
+		<% else %>
 
 		<% end %>
-	<% else %>
-		<p>No Communities</p>
-<% end %>
+	</div>
+</div>
