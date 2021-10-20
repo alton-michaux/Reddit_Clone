@@ -1,9 +1,0 @@
-<% if @communities.size > 0 %>
-    <% @communities.each do |comm| %>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%= link_to comm.name, community_path(id: comm.id) %></li>
-        </ul>
-    <% end %>
-<% else %>
-    <p>No Communities</p>
-<% end %>
