@@ -16,8 +16,16 @@
 	</div>
 		
 	<div class='col-4 text-danger float-end'>
-		<p class='row'><%= pluralize @subscriber_count, 'member' %> in this community</p>
-		<em class='row'><strong>Community rules:</strong><%= simple_format @community.rules %></em>
-		<%= link_to 'New Community Post', new_community_post_path(@community), class: 'row btn btn-danger text-light' %>
+		<div class='card bg-dark p-1 mt-0'>
+			<% if @subscriber_count == 0 %>
+				<p><%= pluralize @subscriber_count, 'member' %> in this community</p>
+			<% else %>
+				<p class='text-light'><%= pluralize @subscriber_count, 'member' %> in this community</p>
+			<% end %>
+			<p class='h5'>About this community:</p>
+			<p class='text-light'><%= @community.summary %></p>
+			<em class='row'><strong>Community rules:</strong><div class='text-light'><%= simple_format @community.rules %></div></em>
+			<%= link_to 'New Community Post', new_community_post_path(@community), class: 'row btn btn-danger text-light ml-2' %>
+		</div>
 	</div>
 </div>

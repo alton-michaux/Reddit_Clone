@@ -36,13 +36,7 @@
 				<% if !@communities.nil? %>
 					<%= render partial: 'communities/list', locals: { communities: @communities } %>
 				<% else %>
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item text-danger">An item</li>
-						<li class="list-group-item text-danger">A second item</li>
-						<li class="list-group-item text-danger">A third item</li>
-						<li class="list-group-item text-danger">A fourth item</li>
-						<li class="list-group-item text-danger">And a fifth one</li>
-					</ul>
+					<p>No Communities</p>
 				<% end %>
 			</div>
 		<%= link_to 'View All', communities_path, class: 'text-light btn btn-danger mt-4 shadow-sm' %>
