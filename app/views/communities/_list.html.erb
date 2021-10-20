@@ -1,4 +1,4 @@
-<% if @communities.size > 0 %>
+<% if @communities.nil? %>
     <% @communities.each do |comm| %>
         <ul class="list-group list-group-flush bg-secondary">
             <li class="list-group-item"><%= link_to comm.name, community_path(id: comm.id), class:'text-danger text-decoration-none' %></li>

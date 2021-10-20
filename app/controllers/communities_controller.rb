@@ -39,7 +39,7 @@ class CommunitiesController < ApplicationController
   end
 
   def community_values
-    params.require(:community).permit(:name, :url, :rules)
+    params.require(:community).permit(:name, :url, :rules, :summary)
   end
 
   def catch_not_found(e)

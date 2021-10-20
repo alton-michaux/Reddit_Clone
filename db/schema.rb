@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_20_014028) do
+ActiveRecord::Schema.define(version: 2021_10_20_025214) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "first_name"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2021_10_20_014028) do
     t.text "rules"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "summary"
     t.index ["account_id"], name: "index_communities_on_account_id"
   end
 

@@ -6,6 +6,6 @@ class Community < ApplicationRecord
   has_many :subscriptions
   has_many :subscribers, through: :subscriptions, source: :account
 
-  validates_presence_of :url, :name, :rules
+  validates_presence_of :url, :name, :rules, :summary
   validates_associated :account
 end
