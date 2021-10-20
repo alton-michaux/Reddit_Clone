@@ -16,6 +16,7 @@
 	</div>
 		
 	<div class='col-4 text-danger float-end'>
+		<p class='row'><%= pluralize @subscriber_count, 'member' %> in this community</p>
 		<em class='row'><strong>Community rules:</strong><%= simple_format @community.rules %></em>
 		<%= link_to 'New Community Post', new_community_post_path(@community), class: 'row btn btn-danger text-light' %>
 	</div>

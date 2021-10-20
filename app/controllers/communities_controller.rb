@@ -12,6 +12,7 @@ class CommunitiesController < ApplicationController
 
   def show
     @posts = @community.posts
+    @subscriber_count = @community.subscribers.count
   end
 
   def new

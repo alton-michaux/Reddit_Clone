@@ -11,7 +11,8 @@ class Account < ApplicationRecord
                               message: 'Invalid Email' }
 
   has_many :posts
-  has_many :communities
+  has_many :communities, through: :subscriptions
+  has_many :subscriptions
 
   def full_name
     "#{first_name} #{last_name}"
