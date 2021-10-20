@@ -9,8 +9,8 @@
 
         <p> <strong>Joined on:</strong> <%= @profile.created_at.strftime('%B %e, %Y')%> </p>
 
-        <% if !current_account.communities.nil? %>
-            <p class='mt-2'><strong>Admin in these communities:</strong> <%= render partial: 'communities/list', locals: { communities: current_account.communities } %></p>
+        <% if !@profile.communities.nil? %>
+            <p class='mt-2'><strong>Admin in these communities:</strong> <%= render partial: 'communities/list', locals: { communities: @profile.communities } %></p>
         <% end %>
     </div>
 </div>
