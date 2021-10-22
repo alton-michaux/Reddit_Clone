@@ -51,7 +51,7 @@ RSpec.describe 'Communities', type: :request do
       sign_in subject
       community_attributes = FactoryBot.attributes_for(:community)
       expect { post communities_path, params: { community: community_attributes } }.to change(Community, :count).by(1)
-      expect(response).to redirect_to communities_path
+      expect(response).to redirect_to community_path(id: Community.last.id)
       sign_out subject
     end
   end
@@ -59,11 +59,11 @@ RSpec.describe 'Communities', type: :request do
     it 'does not save a new entry or redirect' do
       sign_in subject
       community_attributes = FactoryBot.attributes_for(:community)
-      community_attributes.delete(:name)
+      community_attributes[:name] = nil
       expect do
         post communities_path, params: { community: community_attributes }
       end.to_not change(Community, :count)
-      expect(response).to render_template(:new)
+      expect(response).to redirect_to communities_path
       sign_out subject
     end
   end
