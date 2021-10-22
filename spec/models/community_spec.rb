@@ -21,4 +21,7 @@ RSpec.describe Community, type: :model do
   it 'is only valid with an account' do
     expect(subject.account).to_not be_nil
   end
+  it 'is only valid with a summary' do
+    expect(subject.summary).to_not be_nil
+  end
 end
