@@ -19,7 +19,29 @@ class CommunitiesController < ApplicationController
     @community = Community.new
   end
 
-  def create; end
+  def create
+    @community = Community.new community_values
+
+    if @community.save
+      redirect_to community_path(id: @community.id)
+    else
+      @community = Community.find(params[:id])
+      render :new
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @community.update(community_values)
+        format.html { redirect_to @community, notice: 'Community was successfully updated.' }
+        format.json { render :show, status: :ok, location: @community }
+      else
+        pp "update error: #{@community.errors.to_a} \n error on: #{@community.as_json}"
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @community.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   def destroy
     @community.destroy
@@ -33,6 +55,10 @@ class CommunitiesController < ApplicationController
 
   def set_community
     @community = Community.find(params[:id])
+  end
+
+  def community_values
+    params.require(:community).permit(:name, :summary, :account_id, :url, :rules)
   end
 
   def catch_not_found(e)
