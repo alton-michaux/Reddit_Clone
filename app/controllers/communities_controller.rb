@@ -19,7 +19,16 @@ class CommunitiesController < ApplicationController
     @community = Community.new
   end
 
-  def create; end
+  def create
+    @community = Community.new community_values
+
+    if @community.save
+      redirect_to community_path(id: @community.id)
+    else
+      @community = Community.find(params[:id])
+      render :new
+    end
+  end
 
   def destroy
     @community.destroy
@@ -33,6 +42,10 @@ class CommunitiesController < ApplicationController
 
   def set_community
     @community = Community.find(params[:id])
+  end
+
+  def community_values
+    params.require(:community).permit(:name, :summary, :account_id, :url, :rules)
   end
 
   def catch_not_found(e)
