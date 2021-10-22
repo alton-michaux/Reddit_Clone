@@ -10,7 +10,7 @@ RSpec.describe 'posts', type: :request do
       sign_in subject
       post = FactoryBot.create(:post)
       get community_posts_path(post.community.id)
-      expect(response).to have_http_status(302)
+      expect(response).to have_http_status(200)
       sign_out subject
     end
   end
@@ -105,7 +105,7 @@ RSpec.describe 'posts', type: :request do
       expect do
         get community_posts_path(post.community_id)
       end.to_not change(Post, :count)
-      expect(response).to redirect_to community_posts_path(post.community_id)
+      expect(response).to render_template(:index)
       sign_out subject
     end
   end
