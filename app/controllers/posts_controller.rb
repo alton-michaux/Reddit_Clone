@@ -8,7 +8,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @community = Community.find(params[:community_id])
   end
 
   def show; end
