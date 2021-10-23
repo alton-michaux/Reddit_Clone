@@ -18,13 +18,13 @@ class PublicController < ApplicationController
   private
 
   def catch_not_found(e)
-    Rails.logger.debug('There was a not found exception.')
+    Rails.logger.debug('There was a not found exception in public_controller.')
     flash.alert = e.to_s
     redirect_to root_url
   end
 
   def catch_no_method(e)
-    Rails.logger.debug("There was a 'NoMethodError': #{e} (the object may have been created without all it's attributes.)")
+    Rails.logger.debug("There was a 'NoMethodError' in public_controller: #{e} (the object may have been created without all it's attributes.)")
     flash.alert = e.to_s
     redirect_to root_url
   end
