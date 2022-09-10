@@ -1,0 +1,39 @@
+{
+    "buildpacks": [
+      {
+        "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
+      },
+      {
+        "url": "https://github.com/heroku/heroku-buildpack-chromedriver"
+      },
+      {
+        "url": "https://github.com/heroku/heroku-buildpack-nodejs"
+      },
+      {
+        "url": "https://github.com/heroku/heroku-buildpack-ruby"
+      }
+    ],
+    "addons": [
+      "heroku-postgresql"
+    ],
+    "environments": {
+      "test": {
+        "env": {
+          "LANG": "en_US.UTF-8",
+          "NPM_CONFIG_PRODUCTION": "false",
+          "RACK_ENV": "test",
+          "RAILS_ENV": "test",
+          "RAILS_LOG_TO_STDOUT": "enabled",
+          "RAILS_SERVE_STATIC_FILES": "enabled"
+        },
+        "scripts": {
+          "test": "bundle exec rspec"
+        }
+      },
+      "review": {
+        "scripts": {
+          "postdeploy": "rails db:migrate; rails db:seed"
+        }
+      }
+    }
+  }
