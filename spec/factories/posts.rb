@@ -8,7 +8,7 @@ FactoryBot.define do
     f.community_id { [FactoryBot.create(:community)].pluck('id').join }
 
     f.title { Faker::Book.title }
-    f.body { Faker::Lorem.paragraph(sentence_count: 4) }
+    f.body { Faker::Quote.famous_last_words }
     f.upvotes { Faker::Number.within(range: 0..100_0) }
     f.downvotes { Faker::Number.within(range: 0..100_0) }
   end
