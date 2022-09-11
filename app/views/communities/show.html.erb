@@ -17,10 +17,10 @@
 		
 	<div class='col-4 float-end'>
 		<div class='card m-2 mt-0 p-3'>
-			<p class='row'><%= simple_format pluralize @subscriber_count, 'member' %></p>
 			<p class='h5'>About this community</p>
-			<p class='small'>Admin: <%= link_to @community.account.full_name, profile_path(@community.account_id), class:'text-danger text-decoration-none' %></p>
 			<p class='row'><%= simple_format @community.summary %></p>
+			<p class='row'><%= simple_format pluralize @subscriber_count, 'member' %></p>
+			<p class='small'>Admin: <%= link_to @community.account.full_name, profile_path(@community.account_id), class:'text-danger text-decoration-none' %></p>
 			<em class='row text-danger'><strong>Community rules:</strong><%= simple_format @community.rules %></em>
 			<%= link_to 'New Community Post', new_community_post_path(@community), class: 'row btn btn-danger text-light' %>
 		</div>

@@ -36,7 +36,6 @@ class CommunitiesController < ApplicationController
         format.html { redirect_to @community, notice: 'Community was successfully updated.' }
         format.json { render :show, status: :ok, location: @community }
       else
-        pp "update error: #{@community.errors.to_a} \n error on: #{@community.as_json}"
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @community.errors, status: :unprocessable_entity }
       end
@@ -62,13 +61,13 @@ class CommunitiesController < ApplicationController
   end
 
   def catch_not_found(e)
-    Rails.logger.debug('There was a not found exception.')
+    Rails.logger.debug('There was a not found exception in communities_controller.')
     flash.alert = e.to_s
     redirect_to communities_url
   end
 
   def catch_no_method(e)
-    Rails.logger.debug("There was a 'NoMethodError': #{e} (the object may have been created without all it's attributes.)")
+    Rails.logger.debug("There was a 'NoMethodError' in communities_controller: #{e} (the object may have been created without all it's attributes.)")
     flash.alert = e.to_s
     redirect_to communities_url
   end
