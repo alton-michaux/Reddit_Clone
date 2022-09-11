@@ -9,4 +9,8 @@ class Community < ApplicationRecord
   # summary included for test data purposes
   validates_presence_of :url, :name, :rules, :summary
   validates_associated :account
+
+  def subscriber_count
+    Subscription.count
+  end
 end

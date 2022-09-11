@@ -36,7 +36,6 @@ class CommunitiesController < ApplicationController
         format.html { redirect_to @community, notice: 'Community was successfully updated.' }
         format.json { render :show, status: :ok, location: @community }
       else
-        pp "update error: #{@community.errors.to_a} \n error on: #{@community.as_json}"
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @community.errors, status: :unprocessable_entity }
       end
