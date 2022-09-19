@@ -20,12 +20,14 @@ class CommunitiesController < ApplicationController
   end
 
   def create
-    @community = Community.new community_values
-
+    @community = Community.new(community_values)
+    @community.account_id = current_account.id
+    byebug
     if @community.save
+      flash.notice = "Community created successfully"
       redirect_to community_path(id: @community.id)
     else
-      @community = Community.find(params[:id])
+      flash.alert = @community.errors.full_messages.to_s
       render :new
     end
   end
