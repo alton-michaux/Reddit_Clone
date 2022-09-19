@@ -18,21 +18,26 @@ class PostsController < ApplicationController
   def new
     @community = Community.find(params[:community_id])
     @post = Post.new
-    @post.community_id = params[:community_id]
   end
 
   def create
     @community = Community.find(params[:community_id])
     @post = Post.new post_values
-
+    @post.community_id = params[:community_id]
     @post.account_id = current_account.id
-    @post.community_id = @community.id
-
-    if @post.save
-      redirect_to community_path(id: @post.community_id)
+    # @subscription = Subscription.new(account_id: current_account.id, community_id: @community.id)
+byebug
+    if @post.account.communities.include?(@community)
+      if @post.save
+        flash.notice = "Post created!"
+        redirect_to community_path(id: @post.community_id)
+      else
+        flash.alert = "Post not created"
+        render :new
+      end
     else
-      @community = Community.find(params[:community_id])
-      render :new
+      flash.alert = "Must be a member to post"
+      render :index
     end
   end
 
