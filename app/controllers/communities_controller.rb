@@ -4,7 +4,7 @@ class CommunitiesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
   rescue_from StandardError, with: :catch_no_method
   before_action :authenticate_account!, except: %i[index show]
-  before_action :set_community, only: %i[show edit update destroy]
+  before_action :set_community, except: %i[index create new]
 
   def index
     @communities = Community.all
