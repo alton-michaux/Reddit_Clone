@@ -22,7 +22,11 @@
 			<p class='row'><%= simple_format pluralize @subscriber_count, 'member' %></p>
 			<p class='small'>Admin: <%= link_to @community.account.full_name, profile_path(@community.account_id), class:'text-danger text-decoration-none' %></p>
 			<em class='row text-danger'><strong>Community rules:</strong><%= simple_format @community.rules %></em>
-			<%= link_to 'New Community Post', new_community_post_path(@community), class: 'row btn btn-danger text-light' %>
+			<% if !current_account %>
+				<%= link_to 'New Community Post', new_community_post_path(@community), class: 'row btn btn-danger text-light' %>
+			<% else %>
+				<%= link_to 'Join Community', new_community_subscription_path(@community.id), class: 'row btn btn-danger text-light' %>
+			<% end %>
 		</div>
 	</div>
 </div>

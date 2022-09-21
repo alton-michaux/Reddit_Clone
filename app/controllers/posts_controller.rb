@@ -25,9 +25,7 @@ class PostsController < ApplicationController
     @post = Post.new post_values
     @post.community_id = params[:community_id]
     @post.account_id = current_account.id
-    # @subscription = Subscription.new(account_id: current_account.id, community_id: @community.id)
-byebug
-    if @post.account.communities.include?(@community)
+    if is_member?
       if @post.save
         flash.notice = "Post created!"
         redirect_to community_path(id: @post.community_id)
@@ -62,6 +60,16 @@ byebug
   end
 
   private
+
+  def is_member?
+    @community = Community.find(params[:community_id])
+
+    subscriptions = @community.subscriptions
+
+    subscriptions.each do |sub|
+      sub.account_id == current_account.id ? true : false
+    end
+  end
 
   def set_post
     @post = Post.find(params[:id])

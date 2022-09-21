@@ -22,8 +22,8 @@ class CommunitiesController < ApplicationController
   def create
     @community = Community.new(community_values)
     @community.account_id = current_account.id
-    @subscription = Subscription.new(account_id: current_account.id, community_id: @community.id)
-    if @community.save && @subscription.save
+    # @subscription = Subscription.new(account_id: current_account.id, community_id: @community.id)
+    if @community.save
       flash.notice = "Community created successfully"
       redirect_to community_path(id: @community.id)
     else

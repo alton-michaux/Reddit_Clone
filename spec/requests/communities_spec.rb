@@ -46,7 +46,7 @@ RSpec.describe 'Communities', type: :request do
       sign_out subject
     end
   end
-  describe 'post communities_path with valid data' do
+  describe 'post community_path with valid data' do
     it 'saves a new entry and redirects to the show path for the entry' do
       sign_in subject
       community_attributes = FactoryBot.attributes_for(:community)
