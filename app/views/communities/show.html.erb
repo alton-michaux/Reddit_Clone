@@ -24,9 +24,8 @@
 			<em class='row text-danger'><strong>Community rules:</strong><%= simple_format @community.rules %></em>
 			<% community_ids = [] %>
 			<% current_account.subscriptions.each { |sub| community_ids << sub.community_id } %>
-			<% byebug %>
 			<% if community_ids.include?(@community.id) %>
-				<%= link_to 'New Community Post', new_community_post_path(@community), class: 'row btn btn-danger text-light' %>
+				<%= link_to 'New Community Post', new_community_post_path(@community), class: 'row btn btn-success text-light' %>
 			<% else %>
 				<%= link_to 'Join Community', new_subscription_path(account_id: current_account.id, community_id: @community.id),action: :create, :method => :post, class: 'row btn btn-danger text-light' %>
 			<% end %>
