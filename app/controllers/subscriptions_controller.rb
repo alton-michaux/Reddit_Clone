@@ -1,19 +1,20 @@
 class SubscriptionsController < ApplicationController
     def new
-        @account = current_account
-        @community = Community.find(subscription_params[:community_id])
-        @subscription = Subscription.new(account_id: @account.id, community_id: @community.id)
+        @subscription = Subscription.new
     end
 
     def create
-        @subscription = Subscription.new(community_id: subscription_params[:community_id], account_id: subscription_params[:account_id])
+        # byebug
+        @community = Community.find_by(id: subscription_params[:community_id])
+        @subscription = Subscription.new(community_id: @community.id, account_id: subscription_params[:account_id])
 
         if @subscription.save
             flash.notice = "Welcome to #{@community.name}!"
+            redirect_to community_url(id: @community.id)
         else
             flash.alert = "Unable to join #{@community.name}"
+            redirect_to communities_url
         end
-        redirect_to community_url(id: @community.id)
     end
 
     def destroy
@@ -30,6 +31,6 @@ class SubscriptionsController < ApplicationController
     private 
 
     def subscription_params
-        params.fetch(:subscription, {}).permit(:account_id, :community_id)
+        params.permit(:account_id, :community_id)
     end
 end
