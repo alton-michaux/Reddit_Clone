@@ -46,7 +46,7 @@ RSpec.describe 'Communities', type: :request do
       sign_out subject
     end
   end
-  describe 'post communities_path with valid data' do
+  describe 'post community_path with valid data' do
     it 'saves a new entry and redirects to the show path for the entry' do
       sign_in subject
       community_attributes = FactoryBot.attributes_for(:community)
@@ -59,11 +59,11 @@ RSpec.describe 'Communities', type: :request do
     it 'does not save a new entry or redirect' do
       sign_in subject
       community_attributes = FactoryBot.attributes_for(:community)
-      community_attributes[:name] = nil
+      community_attributes[:name] = ''
       expect do
         post communities_path, params: { community: community_attributes }
       end.to_not change(Community, :count)
-      expect(response).to redirect_to communities_path
+      expect(response).to render_template(:new)
       sign_out subject
     end
   end
