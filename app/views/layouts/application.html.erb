@@ -12,6 +12,12 @@
 
   <body class='bg-dark'>
     <%= render partial: 'layouts/header' %>
+    <% if notice %>
+      <p class = "alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class = "alert alert-danger"><%= alert %></p>
+    <% end %>
       <div class='container bg-dark'>
         <div class='row'>
           <div class='col-sm-12 pt-4'>

@@ -22,10 +22,12 @@
 			<p class='row'><%= simple_format pluralize @subscriber_count, 'member' %></p>
 			<p class='small'>Admin: <%= link_to @community.account.full_name, profile_path(@community.account_id), class:'text-danger text-decoration-none' %></p>
 			<em class='row text-danger'><strong>Community rules:</strong><%= simple_format @community.rules %></em>
-			<% if @community.subscriptions.include?(current_account) %>
-				<%= link_to 'New Community Post', new_community_post_path(@community), class: 'row btn btn-danger text-light' %>
+			<% community_ids = [] %>
+			<% current_account.subscriptions.each { |sub| community_ids << sub.community_id } %>
+			<% if community_ids.include?(@community.id) %>
+				<%= link_to 'New Community Post', new_community_post_path(@community), class: 'row btn btn-success text-light' %>
 			<% else %>
-				<%= link_to 'Join this Community', new_community_subscription_path(community_id: @community.id, account_id: current_account.id), class: 'row btn btn-danger text-light' %>
+				<%= link_to 'Join Community', new_subscription_path(account_id: current_account.id, community_id: @community.id),action: :create, :method => :post, class: 'row btn btn-danger text-light' %>
 			<% end %>
 		</div>
 	</div>

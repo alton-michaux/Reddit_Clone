@@ -10,6 +10,8 @@ class Community < ApplicationRecord
   validates_presence_of :url, :name, :rules, :summary
   validates_associated :account
 
+  # validates :subscribers, uniqueness: { scope: :account_id, case_sensitive: false }
+
   def subscriber_count
     Subscription.count
   end
