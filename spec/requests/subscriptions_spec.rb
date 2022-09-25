@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Subscriptions", type: :request do
   let(:account) { FactoryBot.create(:account)}
   let(:community) { FactoryBot.create(:community) }
-
+  
   describe "posts new subscription path" do
     it "creates a new subscription" do
       sign_in account
@@ -18,6 +18,7 @@ RSpec.describe "Subscriptions", type: :request do
       subscription = FactoryBot.create(:subscription, account_id: account.id, community_id: community.id)
       expect { delete community_subscription_path(id: subscription.id, community_id: community.id, account_id: account.id) }.to change(Subscription, :count).by(-1)
       expect(response).to redirect_to communities_path
+      sign_out account
     end
   end
 end
