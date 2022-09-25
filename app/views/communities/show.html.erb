@@ -9,7 +9,7 @@
 				<% @posts.each do |post| %>
 					<h4><%= link_to post.title, community_post_path(@community, post), class:'text-dark text-decoration-none' %></h4>
 					<p class='text-dark float-right'><%= truncate post.body, length: 200 %></p>
-					<small class='text-danger'>Posted by <%= post.account.first_name %> on <%= post.created_at.strftime('%B %d, %Y')%></small>
+					<small class='text-danger mb-1'>Posted by <%= post.account.first_name %> on <%= post.created_at.strftime('%B %d, %Y')%></small>
 				<% end %>
 			</div>
 		<% end %>
@@ -26,7 +26,7 @@
 			<% current_account.subscriptions.each { |sub| community_ids << sub.community_id } %>
 			<% if community_ids.include?(@community.id) %>
 			  	<% subscription = current_account.subscriptions.find_by(community_id: @community.id) %>
-				<%= link_to 'New Community Post', new_community_post_path(@community), class: 'row btn btn-success text-light' %>
+				<%= link_to 'New Community Post', new_community_post_path(@community), class: 'row btn btn-success text-light mb-1' %>
 				<%= link_to 'Leave Community', community_subscription_path(id: subscription.id, community_id: @community.id, account_id: current_account.id), action: :destroy, :method => :delete, class: 'row btn btn-danger text-light' %>
 			<% else %>
 				<%= link_to 'Join Community', community_subscriptions_path(account_id: current_account.id, community_id: @community.id), action: :create, :method => :post, class: 'row btn btn-danger text-light' %>
