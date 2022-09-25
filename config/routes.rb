@@ -6,10 +6,10 @@ Rails.application.routes.draw do
 
   resources :communities do
     resources :posts
-    # resources :subscriptions
+    resources :subscriptions
   end
 
-  resources :subscriptions
+  # resources :subscriptions
   # post 'subscriptions/' => 'subscriptions#create', as: :new_subscription
   # get 'account/:id/subscriptions' => 'account_subscriptions#index', as: 'account_subscriptions'
 
