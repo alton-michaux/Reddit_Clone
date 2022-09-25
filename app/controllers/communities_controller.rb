@@ -22,7 +22,6 @@ class CommunitiesController < ApplicationController
   def create
     @community = Community.new(community_values)
     @community.account_id = current_account.id
-    # @subscription = Subscription.new(account_id: current_account.id, community_id: @community.id)
     if @community.save
       flash.notice = 'Community created successfully'
       redirect_to community_path(id: @community.id)
@@ -65,15 +64,15 @@ class CommunitiesController < ApplicationController
     params.require(:community).permit(:name, :summary, :account_id, :url, :rules)
   end
 
-  def catch_not_found(e)
+  def catch_not_found(err)
     Rails.logger.debug('There was a not found exception in communities_controller.')
-    flash.alert = e.to_s
+    flash.alert = err.to_s
     redirect_to communities_url
   end
 
-  def catch_no_method(e)
-    Rails.logger.debug("There was a 'NoMethodError' in communities_controller: #{e} (the object may have been created without all it's attributes.)")
-    flash.alert = e.to_s
+  def catch_no_method(err)
+    Rails.logger.debug("There was a 'NoMethodError' in communities_controller: #{err} (the object may have been created without all it's attributes.)")
+    flash.alert = err.to_s
     redirect_to communities_url
   end
 end

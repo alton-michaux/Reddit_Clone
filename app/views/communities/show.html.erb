@@ -31,6 +31,9 @@
 			<% else %>
 				<%= link_to 'Join Community', community_subscriptions_path(account_id: current_account.id, community_id: @community.id), action: :create, :method => :post, class: 'row btn btn-danger text-light' %>
 			<% end %>
+			<% if @community.account_id === current_account.id %>
+				<%= link_to 'Delete this community', community_path(@community.id), action: :destroy, method: :delete, class: 'row btn btn-danger text-light mt-1'%>
+			<% end %>
 		</div>
 	</div>
 </div>

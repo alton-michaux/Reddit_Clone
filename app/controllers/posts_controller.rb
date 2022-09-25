@@ -75,15 +75,15 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body, :account_id, :community_id)
   end
 
-  def catch_not_found(e)
+  def catch_not_found(err)
     Rails.logger.debug('There was a not found exception in posts_controller.')
-    flash.alert = e.to_s
+    flash.alert = err.to_s
     redirect_to community_posts_url
   end
 
-  def catch_no_method(e)
-    Rails.logger.debug("There was a 'NoMethodError' in posts_controller: #{e} (the object may have been created without all it's attributes.)")
-    flash.alert = e.to_s
+  def catch_no_method(err)
+    Rails.logger.debug("There was a 'NoMethodError' in posts_controller: #{err} (the object may have been created without all it's attributes.)")
+    flash.alert = err.to_s
     redirect_to community_posts_url
   end
 end
