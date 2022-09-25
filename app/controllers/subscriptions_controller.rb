@@ -3,9 +3,10 @@ class SubscriptionsController < ApplicationController
   rescue_from StandardError, with: :catch_no_method
   # before_action :authenticate_account!, except: %i[index show]
   before_action :set_community, except: %i[index]
+  before_action :set_account
 
   def index
-    @subscriptions = current_account.subscriptions
+    @subscriptions = @account.subscriptions
   end
 
   def show; end
@@ -17,15 +18,14 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    @community = Community.find_by(id: subscription_params[:community_id])
-    @subscription = Subscription.new(community_id: @community.id, account_id: subscription_params[:account_id])
+    @subscription = Subscription.new(community_id: @community.id, account_id: @account.id)
 
     if @subscription.save
-        flash.notice = "Welcome to #{@community.name}!"
-        redirect_to community_url(id: @community.id)
+      flash.notice = "Welcome to #{@community.name}!"
+      redirect_to community_url(id: @community.id)
     else
-        flash.alert = "Unable to join #{@community.name}"
-        redirect_to communities_url
+      flash.alert = "Unable to join #{@community.name}"
+      redirect_to communities_url
     end
   end
 
@@ -42,13 +42,13 @@ class SubscriptionsController < ApplicationController
   end
 
   def destroy
-    @community = Community.find(subscription_params[:community_id])
+    @subscription = Subscription.find_by(account_id: @account.id, community_id: @community.id)
     if @subscription.destroy
-        flash.notice = "You left #{@community.name}"
-        redirect_to communities_url
+      flash.notice = "You left #{@community.name}"
+      redirect_to communities_url
     else
-        flash.alert = "Unable to leave #{@community.name}"
-        redirect_to community_url(id: @community.id)
+      flash.alert = "Unable to leave #{@community.name}"
+      redirect_to community_url(id: @community.id)
     end
   end
 
@@ -59,7 +59,11 @@ class SubscriptionsController < ApplicationController
   end
     
   def set_community
-    @community = Community.find(params[:community_id])
+    @community = Community.find(subscription_params[:community_id])
+  end
+
+  def set_account
+    @account = Account.find(subscription_params[:account_id])
   end
 
   def catch_not_found(e)
