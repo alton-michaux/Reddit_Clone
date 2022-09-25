@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SubscriptionsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
   rescue_from StandardError, with: :catch_no_method
@@ -52,12 +54,12 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-  private 
+  private
 
   def subscription_params
     params.permit(:account_id, :community_id)
   end
-    
+
   def set_community
     @community = Community.find(subscription_params[:community_id])
   end
@@ -66,15 +68,15 @@ class SubscriptionsController < ApplicationController
     @account = Account.find(subscription_params[:account_id])
   end
 
-  def catch_not_found(e)
+  def catch_not_found(err)
     Rails.logger.debug('There was a not found exception in subscriptions_controller.')
-    flash.alert = e.to_s
+    flash.alert = err.to_s
     redirect_to communities_url
   end
 
-  def catch_no_method(e)
-    Rails.logger.debug("There was a 'NoMethodError' in subscriptions_controller: #{e} (the object may have been created without all it's attributes.)")
-    flash.alert = e.to_s
+  def catch_no_method(err)
+    Rails.logger.debug("There was a 'NoMethodError' in subscriptions_controller: #{err} (the object may have been created without all it's attributes.)")
+    flash.alert = err.to_s
     redirect_to communities_url
   end
 end

@@ -24,10 +24,10 @@ class CommunitiesController < ApplicationController
     @community.account_id = current_account.id
     # @subscription = Subscription.new(account_id: current_account.id, community_id: @community.id)
     if @community.save
-      flash.notice = "Community created successfully"
+      flash.notice = 'Community created successfully'
       redirect_to community_path(id: @community.id)
     else
-      flash.alert = "Something went wrong, community not created"
+      flash.alert = 'Something went wrong, community not created'
       render :new
     end
   end
@@ -35,11 +35,11 @@ class CommunitiesController < ApplicationController
   def update
     respond_to do |format|
       if @community.update(community_values)
-        flash.notice = "Community successfully updated"
+        flash.notice = 'Community successfully updated'
         format.html { redirect_to @community, notice: 'Community was successfully updated.' }
         format.json { render :show, status: :ok, location: @community }
       else
-        flash.alert = "Something went wrong"
+        flash.alert = 'Something went wrong'
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @community.errors, status: :unprocessable_entity }
       end
@@ -49,7 +49,7 @@ class CommunitiesController < ApplicationController
   def destroy
     @community.destroy
     respond_to do |format|
-      flash.notice = "Community destroyed"
+      flash.notice = 'Community destroyed'
       format.html { redirect_to communities_url, notice: 'Community was successfully destroyed.' }
       format.json { head :no_content }
     end
