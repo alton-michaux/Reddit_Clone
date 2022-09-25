@@ -25,16 +25,16 @@ class PostsController < ApplicationController
     @post = Post.new post_values
     @post.community_id = params[:community_id]
     @post.account_id = current_account.id
-    if is_member?
+    if member?
       if @post.save
-        flash.notice = "Post created!"
+        flash.notice = 'Post created!'
         redirect_to community_path(id: @post.community_id)
       else
-        flash.alert = "Post not created"
+        flash.alert = 'Post not created'
         render :new
       end
     else
-      flash.alert = "Must be a member to post"
+      flash.alert = 'Must be a member to post'
       render :index
     end
   end
@@ -61,13 +61,9 @@ class PostsController < ApplicationController
 
   private
 
-  def is_member?
-    @community = Community.find(params[:community_id])
-
-    subscriptions = @community.subscriptions
-
-    subscriptions.each do |sub|
-      sub.account_id == current_account.id ? true : false
+  def member?
+    @community.subscriptions.each do |sub|
+      sub.account_id == current_account.id
     end
   end
 
