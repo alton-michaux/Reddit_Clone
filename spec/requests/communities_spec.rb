@@ -96,11 +96,8 @@ RSpec.describe 'Communities', type: :request do
     it 'deletes a community record' do
       sign_in subject
       community = FactoryBot.create(:community)
-      community.destroy
-      expect do
-        get communities_path
-      end.to_not change(Community, :count)
-      expect(response).to render_template(:index)
+      expect { delete community_path(community.id) }.to change(Community, :count).by(-1)
+      expect(response).to redirect_to communities_path
       sign_out subject
     end
   end

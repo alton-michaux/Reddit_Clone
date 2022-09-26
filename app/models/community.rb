@@ -5,12 +5,10 @@ class Community < ApplicationRecord
   has_many :posts
   has_many :subscriptions
   has_many :subscribers, through: :subscriptions, source: :account
+  # validates :subscribers, uniqueness: { scope: :account_id, case_sensitive: false }
 
-  # summary included for test data purposes
   validates_presence_of :url, :name, :rules, :summary
   validates_associated :account
-
-  # validates :subscribers, uniqueness: { scope: :account_id, case_sensitive: false }
 
   def subscriber_count
     Subscription.count
