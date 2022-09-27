@@ -9,7 +9,7 @@
 				<% @posts.each do |post| %>
 					<h4><%= link_to post.title, community_post_path(@community, post), class:'text-dark text-decoration-none' %></h4>
 					<p class='text-dark float-right'><%= truncate post.body, length: 200 %></p>
-					<small class='text-danger'>Posted by <%= post.account.first_name %> on <%= post.created_at.strftime('%B %d, %Y')%></small>
+					<small class='text-danger mb-1'>Posted by <%= post.account.first_name %> on <%= post.created_at.strftime('%B %d, %Y')%></small>
 				<% end %>
 			</div>
 		<% end %>
@@ -22,7 +22,7 @@
 			<p class='row'><%= simple_format pluralize @subscriber_count, 'member' %></p>
 			<p class='small'>Admin: <%= link_to @community.account.full_name, profile_path(@community.account_id), class:'text-danger text-decoration-none' %></p>
 			<em class='row text-danger'><strong>Community rules:</strong><%= simple_format @community.rules %></em>
-			<%= link_to 'New Community Post', new_community_post_path(@community), class: 'row btn btn-danger text-light' %>
+			<%= render partial: 'community_options' %>
 		</div>
 	</div>
 </div>

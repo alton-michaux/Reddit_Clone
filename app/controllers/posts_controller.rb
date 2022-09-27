@@ -18,21 +18,24 @@ class PostsController < ApplicationController
   def new
     @community = Community.find(params[:community_id])
     @post = Post.new
-    @post.community_id = params[:community_id]
   end
 
   def create
     @community = Community.find(params[:community_id])
     @post = Post.new post_values
-
+    @post.community_id = params[:community_id]
     @post.account_id = current_account.id
-    @post.community_id = @community.id
-
-    if @post.save
-      redirect_to community_path(id: @post.community_id)
+    if member?
+      if @post.save
+        flash.notice = 'Post created!'
+        redirect_to community_path(id: @post.community_id)
+      else
+        flash.alert = 'Post not created'
+        render :new
+      end
     else
-      @community = Community.find(params[:community_id])
-      render :new
+      flash.alert = 'Must be a member to post'
+      render :index
     end
   end
 
@@ -58,6 +61,12 @@ class PostsController < ApplicationController
 
   private
 
+  def member?
+    @community.subscriptions.each do |sub|
+      sub.account_id == current_account.id
+    end
+  end
+
   def set_post
     @post = Post.find(params[:id])
   end
@@ -66,15 +75,15 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body, :account_id, :community_id)
   end
 
-  def catch_not_found(e)
+  def catch_not_found(err)
     Rails.logger.debug('There was a not found exception in posts_controller.')
-    flash.alert = e.to_s
+    flash.alert = err.to_s
     redirect_to community_posts_url
   end
 
-  def catch_no_method(e)
-    Rails.logger.debug("There was a 'NoMethodError' in posts_controller: #{e} (the object may have been created without all it's attributes.)")
-    flash.alert = e.to_s
+  def catch_no_method(err)
+    Rails.logger.debug("There was a 'NoMethodError' in posts_controller: #{err} (the object may have been created without all it's attributes.)")
+    flash.alert = err.to_s
     redirect_to community_posts_url
   end
 end
