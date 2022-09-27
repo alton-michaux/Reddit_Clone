@@ -17,6 +17,13 @@ clouddev:
   <<: *default
   database: clouddev
 
+review:
+  <<: *default
+  database: vamos_review
+
+staging:
+  <<: *default
+  database: vamos_staging
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
