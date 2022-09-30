@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   get 'u/:id' => 'public#profile', as: :profile
 
   resources :communities do
-    resources :posts
+    resources :posts do
+      member do
+        put "upvote", to: "posts#upvote"
+        put "downvote", to: "posts#downvote"
+      end
+    end
     resources :subscriptions
   end
 
