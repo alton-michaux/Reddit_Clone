@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   resources :communities do
     resources :posts do
       member do
-        put "upvote", to: "posts#upvote"
-        put "downvote", to: "posts#downvote"
+        put 'upvote', to: 'posts#upvote'
+        put 'downvote', to: 'posts#downvote'
       end
     end
     resources :subscriptions

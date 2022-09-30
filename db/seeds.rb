@@ -29,8 +29,10 @@ Subscription.create(account_id: account_4.id, community_id: community_4.id)
 
 puts "#{Subscription.count} subscriptions created"
 
-Post.create(account_id: account_1.id, community_id: community_1.id, title: 'Dragons are real', body: 'One ate my sandwich yesterday and he keeps coming back to my house to mock me about it', total_comments: 0)
-Post.create(account_id: account_2.id, community_id: community_2.id, title: 'Do not envy the butterfly', body: 'One ate my sandwich yesterday and he keeps coming back to my house to mock me about it', total_comments: 0)
+Post.create(account_id: account_1.id, community_id: community_1.id, title: 'Dragons are real', body: 'One ate my sandwich yesterday and he keeps coming back to my house to mock me about it',
+            total_comments: 0)
+Post.create(account_id: account_2.id, community_id: community_2.id, title: 'Do not envy the butterfly', body: 'One ate my sandwich yesterday and he keeps coming back to my house to mock me about it',
+            total_comments: 0)
 Post.create(account_id: account_3.id, community_id: community_3.id, title: "I really don't see myself buying anything from Walmart", body: "I'd rather not get shot today", total_comments: 0)
 Post.create(account_id: account_4.id, community_id: community_4.id, title: 'Welcome Everyone~', body: 'Show love to one another and enjoy the day!', total_comments: 0)
 

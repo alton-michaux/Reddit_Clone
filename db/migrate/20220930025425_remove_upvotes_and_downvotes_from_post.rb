@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveUpvotesAndDownvotesFromPost < ActiveRecord::Migration[6.1]
   def up
     change_table :posts, bulk: true do |t|
