@@ -62,13 +62,13 @@ class PostsController < ApplicationController
   def upvote
     @post = Post.find(params[:id])
     @post.upvote_by current_account
-    redirect_to post_path
+    redirect_to community_post_path(@post)
   end
 
   def downvote
     @post = Post.find(params[:id])
     @post.downvote_by current_account
-    redirect_to post_path
+    redirect_to community_post_path(@post)
   end
 
   private

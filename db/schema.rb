@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_30_022634) do
+ActiveRecord::Schema.define(version: 2022_09_30_025425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,8 +48,6 @@ ActiveRecord::Schema.define(version: 2022_09_30_022634) do
     t.bigint "community_id"
     t.string "title"
     t.text "body"
-    t.integer "upvotes", default: 0
-    t.integer "downvotes", default: 0
     t.integer "total_comments", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
