@@ -54,7 +54,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "reddit_clone_production"
+  # config.active_job.queue_name_prefix = "rSites_API_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
 
@@ -81,6 +81,7 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
+
   # config.action_mailer.delivery_method = :sendgrid_actionmailer
   # config.action_mailer.sendgrid_actionmailer_settings = {
   # api_key: Rails.application.credentials[:SENDGRID_API_KEY],
