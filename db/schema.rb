@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_211_020_025_214) do
+ActiveRecord::Schema.define(version: 20_220_930_025_425) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -49,8 +49,6 @@ ActiveRecord::Schema.define(version: 20_211_020_025_214) do
     t.bigint 'community_id'
     t.string 'title'
     t.text 'body'
-    t.integer 'upvotes', default: 0
-    t.integer 'downvotes', default: 0
     t.integer 'total_comments', default: 0
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
@@ -65,5 +63,21 @@ ActiveRecord::Schema.define(version: 20_211_020_025_214) do
     t.datetime 'updated_at', precision: 6, null: false
     t.index ['account_id'], name: 'index_subscriptions_on_account_id'
     t.index ['community_id'], name: 'index_subscriptions_on_community_id'
+  end
+
+  create_table 'votes', force: :cascade do |t|
+    t.string 'votable_type'
+    t.bigint 'votable_id'
+    t.string 'voter_type'
+    t.bigint 'voter_id'
+    t.boolean 'vote_flag'
+    t.string 'vote_scope'
+    t.integer 'vote_weight'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[votable_id votable_type vote_scope], name: 'index_votes_on_votable_id_and_votable_type_and_vote_scope'
+    t.index %w[votable_type votable_id], name: 'index_votes_on_votable_type_and_votable_id'
+    t.index %w[voter_id voter_type vote_scope], name: 'index_votes_on_voter_id_and_voter_type_and_vote_scope'
+    t.index %w[voter_type voter_id], name: 'index_votes_on_voter_type_and_voter_id'
   end
 end
