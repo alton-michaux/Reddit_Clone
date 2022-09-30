@@ -36,12 +36,12 @@
 
 <% if current_account.posts.include?(@post) %>
 	<div class='col-sm-3 mt-4'>
-		<%= link_to 'Back', community_posts_path(@post.community_id), class: 'btn btn-secondary' %>
+		<%= link_to 'Back', communities_path, class: 'btn btn-secondary' %>
 		<%= link_to 'Edit', edit_community_post_path(@post.community_id, @post.id), class: 'btn btn-danger' %>
 	</div>
 <% else %>
 	<div class='col-sm-3 mt-4'>
-		<%= link_to 'Back', community_posts_path(@post.community_id), class: 'btn btn-secondary' %>
+		<%= link_to 'Back', communities_path(@post.community_id), class: 'btn btn-secondary' %>
 	</div>
 <% end %>
 </div>
