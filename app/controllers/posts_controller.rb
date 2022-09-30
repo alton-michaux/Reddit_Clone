@@ -94,6 +94,7 @@ class PostsController < ApplicationController
   end
 
   def catch_no_method(err)
+    byebug
     Rails.logger.debug("There was a 'NoMethodError' in posts_controller: #{err} (the object may have been created without all it's attributes.)")
     flash.alert = err.to_s
     redirect_to community_posts_url
