@@ -14,6 +14,8 @@ class Account < ApplicationRecord
   has_many :subscriptions
   has_many :communities, through: :subscriptions
 
+  acts_as_voter
+
   def full_name
     "#{first_name} #{last_name}"
   end

@@ -5,20 +5,32 @@
 
 <% if current_account.communities.include?(@post.community) %>
 	<div class='row'>
-		<div class='col-2 float-left text-danger'>
-			<%= link_to upvote_community_post_path(@post.community_id, @post.id), action: :update, method: :put, class: 'btn btn-success' do %>
-				<span class="glyphicon glyphicon-chevron-up"></span>
-				Upvote
-			<% end %>
-				<%= @post.get_upvotes.size %>
-		</div>
-		<div class='col-2 float right text-danger'>
-			<%= link_to downvote_community_post_path(@post.community_id, @post.id), action: :update, method: :put, class: 'btn btn-danger' do %>
-				<span class="glyphicon glyphicon-chevron-down"></span>
-				Downvote
-			<% end %>
-				<%= @post.get_downvotes.size %>
-		</div>
+		<% if current_account.voted_up_on?(@post) %>
+			<div class='col-2 float-left text-light mb-1 pt-1'>
+				Upvotes: <%= @post.get_upvotes.size %>
+			</div>
+		<% else %>
+			<div class='col-2 float-left text-danger mb-1'>
+				<%= link_to upvote_community_post_path(@post.community_id, @post.id), action: :update, method: :put, class: 'btn btn-success' do %>
+					<span class="glyphicon glyphicon-chevron-up">
+						Upvote
+					</span>
+				<% end %>
+			</div>
+		<% end %>
+		<% if current_account.voted_down_on?(@post) %>
+			<div class='col-2 float-right text-light mb-1 pt-1'>
+				Downvotes: <%= @post.get_downvotes.size %>
+			</div>
+		<% else %>
+			<div class='col-2 float-right text-danger mb-1'>
+				<%= link_to downvote_community_post_path(@post.community_id, @post.id), action: :update, method: :put, class: 'btn btn-danger' do %>
+					<span class="glyphicon glyphicon-chevron-down">
+						Downvote
+					</span>
+				<% end %>
+			</div>
+		<% end %>
 	</div>
 <% end %>
 
