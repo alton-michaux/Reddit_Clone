@@ -18,9 +18,12 @@
 	</div>
 <% end %>
 <div class='row'>
-	<div class='col p-1'>
+	<div class='col p-1 d-flex content-divs'>
 			<p class='h4 text-light'>
 				Recent Posts
+			</p>
+			<p class='h4 text-light' id='link-to-communities'>
+				<%= link_to 'Communities', communities_path, action: :index, method: :get, class: 'text-light' %>
 			</p>
 	</div>
 </div>
@@ -31,7 +34,6 @@
 		</div>
 	</div>
 	<div id='community-div'>
-		<p class='h5 text-light mb-2'>Up and Coming Communities</p>
 			<div class='card'>
 				<% if !@communities.nil? %>
 					<%= render partial: 'communities/list', locals: { communities: @communities } %>
@@ -39,6 +41,6 @@
 					<p>No Communities</p>
 				<% end %>
 			</div>
-		<%= link_to 'View All', communities_path, class: 'text-light btn btn-danger mt-4 shadow-sm' %>
+		<%= link_to 'View All Communities', communities_path, class: 'text-light btn btn-danger mt-4 shadow-sm' %>
 	</div>
 </div>

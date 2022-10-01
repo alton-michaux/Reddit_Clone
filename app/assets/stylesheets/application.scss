@@ -25,8 +25,27 @@
 @include media-breakpoint-up(xl) { min-width: 1200px }
 @include media-breakpoint-up(xxl) { min-width: 1400px }
 
+a {
+    text-decoration: none;
+}
+
 #community-div {
     visibility: hidden;;
+}
+
+#link-to-communities {
+    visibility: visible;
+}
+
+.content-divs {
+    position: sticky;
+    z-index: 1;
+    justify-content: space-between;
+    height: 10%;
+}
+
+.mobile-hide {
+    visibility: hidden;
 }
 
 @include media-breakpoint-up(md) {
@@ -38,10 +57,18 @@
         width: 66%;
     }
 
+    #link-to-communities {
+        visibility: hidden;
+    }
+    
     #community-div {
         visibility: visible;
         width: 33%;
     } 
+
+    .mobile-hide {
+        visibility: visible;
+    }
 
 }
 
