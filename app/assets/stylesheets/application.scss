@@ -61,6 +61,10 @@ a {
     grid-column: span 2;
 }
 
+.edit-registration {
+    width: 100%;
+}
+
 .content-divs {
     position: sticky;
     z-index: 1;
@@ -78,6 +82,10 @@ a {
 
 .trending-topic-topic {
     text-align: center;
+}
+
+.desktop-hide {
+    visibility: visible;
 }
 
 @include media-breakpoint-up(md) {
@@ -108,9 +116,17 @@ a {
         visibility: visible;
         width: 33%;
     } 
+    
+    .edit-registration {
+        width: 25%;
+    }
 
     .trending-topic {
         grid-template-columns: auto auto auto;
+    }
+
+    .desktop-hide {
+        visibility: hidden;
     }
 
 }
