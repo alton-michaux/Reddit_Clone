@@ -7,11 +7,11 @@
 		<% if current_account.communities.include?(@post.community) %>
 			<div class='row'>
 				<% if current_account.voted_up_on?(@post) %>
-					<div class='col-2 float-left text-light mb-1 pt-1'>
+					<div class='col-2 float-left text-light mb-1 pt-1 vote-divs'>
 						Upvotes: <%= @post.get_upvotes.size %>
 					</div>
 				<% else %>
-					<div class='col-2 float-left text-danger mb-1'>
+					<div class='col-2 float-left text-danger mb-1 vote-divs'>
 						<%= link_to upvote_community_post_path(@post.community_id, @post.id), action: :update, method: :put, class: 'btn btn-success' do %>
 							<span class="glyphicon glyphicon-chevron-up">
 								Upvote
@@ -20,11 +20,11 @@
 					</div>
 				<% end %>
 				<% if current_account.voted_down_on?(@post) %>
-					<div class='col-2 float-right text-light mb-1 pt-1'>
+					<div class='col-2 float-right text-light mb-1 pt-1 vote-divs'>
 						Downvotes: <%= @post.get_downvotes.size %>
 					</div>
 				<% else %>
-					<div class='col-2 float-right text-danger mb-1'>
+					<div class='col-2 float-right text-danger mb-1 vote-divs'>
 						<%= link_to downvote_community_post_path(@post.community_id, @post.id), action: :update, method: :put, class: 'btn btn-danger' do %>
 							<span class="glyphicon glyphicon-chevron-down">
 								Downvote

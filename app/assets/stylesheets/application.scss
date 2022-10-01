@@ -114,6 +114,10 @@ a {
     visibility: visible;
 }
 
+.vote-divs {
+    margin: 5%;
+}
+
 @include media-breakpoint-up(md) {
     .trending-topic {
         margin: 6%;
@@ -178,6 +182,10 @@ a {
 
     .desktop-hide {
         visibility: hidden;
+    }
+
+    .vote-divs {
+        margin: 0;
     }
 
 }
