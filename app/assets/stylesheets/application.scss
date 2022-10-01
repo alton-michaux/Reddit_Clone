@@ -33,19 +33,11 @@
 
 body {
     width: 100vw;
-    height: 100vh;
 }
 
 a {
     text-decoration: none;
 }
-
-// #navbar {
-//     position: -webkit-sticky;
-//     position: sticky;
-//     top: 0;
-//     z-index: 1001;
-// }
 
 #trending-header {
     text-align: center;
@@ -53,10 +45,6 @@ a {
 
 #community-div {
     display: none;;
-}
-
-#posts-div {
-    overflow: auto;
 }
 
 #link-to-communities {
