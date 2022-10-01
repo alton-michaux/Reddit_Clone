@@ -47,18 +47,6 @@ class CommunitiesController < ApplicationController
 
   def edit; end
 
-  def update
-    respond_to do |format|
-      if @community.update(community_values)
-        format.html { redirect_to @community, notice: 'Community was successfully updated.' }
-        format.json { render :show, status: :ok, location: @community }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @community.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   def destroy
     @community.destroy
     respond_to do |format|
