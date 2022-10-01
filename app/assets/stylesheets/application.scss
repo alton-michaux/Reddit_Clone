@@ -25,8 +25,23 @@
 @include media-breakpoint-up(xl) { min-width: 1200px }
 @include media-breakpoint-up(xxl) { min-width: 1400px }
 
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
 a {
     text-decoration: none;
+}
+
+#trending-header {
+    text-align: center;
 }
 
 #community-div {
@@ -37,22 +52,50 @@ a {
     visibility: visible;
 }
 
+#headers {
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+#topic-3 {
+    grid-column: span 2;
+}
+
 .content-divs {
     position: sticky;
     z-index: 1;
     justify-content: space-between;
-    height: 10%;
 }
 
-.mobile-hide {
-    visibility: hidden;
+.trending-topic {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: auto auto;
+    align-items: center;
+    row-gap: 15%;
+    margin: 7%;
+}
+
+.trending-topic-topic {
+    text-align: center;
 }
 
 @include media-breakpoint-up(md) {
-
+    .trending-topic {
+        margin: 6%;
+    }
 }
 
 @include media-breakpoint-up(lg) {
+    #headers {
+        margin-right: 0;
+        margin-left: 2%;
+    }
+    
+    #topic-3 {
+        grid-column: span 1;
+    }
+
     #posts-div {
         width: 66%;
     }
@@ -66,8 +109,8 @@ a {
         width: 33%;
     } 
 
-    .mobile-hide {
-        visibility: visible;
+    .trending-topic {
+        grid-template-columns: auto auto auto;
     }
 
 }
