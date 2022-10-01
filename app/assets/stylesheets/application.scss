@@ -40,12 +40,22 @@ a {
     text-decoration: none;
 }
 
+#navbar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+}
 #trending-header {
     text-align: center;
 }
 
 #community-div {
-    visibility: hidden;;
+    display: none;;
+}
+
+#posts-div {
+    overflow: auto;
 }
 
 #link-to-communities {
@@ -114,6 +124,10 @@ a {
     visibility: visible;
 }
 
+.mobile-hide {
+    display: none;
+}
+
 .vote-divs {
     margin: 5%;
 }
@@ -149,7 +163,7 @@ a {
     }
 
     #link-to-communities {
-        visibility: hidden;
+        display: none;
     }
 
     #community-page-div {
@@ -181,7 +195,11 @@ a {
     }
 
     .desktop-hide {
-        visibility: hidden;
+        display: none;
+    }
+
+    .mobile-hide {
+        visibility: visible;
     }
 
     .vote-divs {
