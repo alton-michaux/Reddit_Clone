@@ -1,11 +1,13 @@
-<% unless @posts.nil? %>
+<% unless account_signed_in? %>
 	<p class='h4 text-light m-4 mt-1' id="trending-header">
 		Trending: <%= Date.today.strftime('%B %e, %Y') %>
 	</p>
+
 	<div class='row text-danger mt-2 trending-topic'>
 		<% communities = Hash.new(0) %>
 		<% @posts.each { |post| communities[post.community_id] += 1 } %>
 		<% sorted_communities = communities.sort_by {|k,v| v}.reverse %>
+			<%byebug%>
 		<div class='trending-topic-topic' id="topic-1">
 			<% id1 = sorted_communities[0][0] %>
 			<% community1 = Community.find_by(id: id1) %>
