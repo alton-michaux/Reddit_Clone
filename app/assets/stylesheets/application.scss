@@ -61,6 +61,32 @@ a {
     grid-column: span 2;
 }
 
+#community-page-div {
+    flex-direction: column;
+}
+
+#community-list {
+    order: 2;
+    width: 100%;
+}
+
+#community-options {
+    order: 1;
+    width: 100%;
+}
+
+#profile-posts {
+    order: 2;
+    width: 100%;
+}
+
+#profile-info {
+    order: 1;
+    width: 100%;
+}
+
+.profile-divs,
+.new-post,
 .edit-registration {
     width: 100%;
 }
@@ -99,6 +125,16 @@ a {
         margin-right: 0;
         margin-left: 2%;
     }
+
+    #profile-posts {
+        order: 1;
+        width: 66%;
+    }
+
+    #profile-info {
+        order: 2;
+        width: 33%;
+    }
     
     #topic-3 {
         grid-column: span 1;
@@ -111,14 +147,29 @@ a {
     #link-to-communities {
         visibility: hidden;
     }
+
+    #community-page-div {
+        flex-direction: row;
+    }
     
     #community-div {
         visibility: visible;
         width: 33%;
-    } 
+    }
+
+    #community-list {
+        order: 1;
+        width: 66%;
+    }
+
+    #community-options {
+        order: 2;
+        width: 33%;
+    }
     
+    .new-post,
     .edit-registration {
-        width: 25%;
+        width: 60%;
     }
 
     .trending-topic {

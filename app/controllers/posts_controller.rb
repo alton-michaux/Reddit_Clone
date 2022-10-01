@@ -70,7 +70,7 @@ class PostsController < ApplicationController
     @post.downvote_by current_account
     redirect_to community_post_path(@post)
   end
-  
+
   # def trending(int)
   #   communities = Hash.new(0)
   #   @posts.each { |post| communities[post.community_id] += 1 }
@@ -94,7 +94,7 @@ class PostsController < ApplicationController
   def post_values
     params.require(:post).permit(:title, :body, :account_id, :community_id)
   end
-  
+
   def catch_not_found(err)
     Rails.logger.debug('There was a not found exception in posts_controller.')
     flash.alert = err.to_s

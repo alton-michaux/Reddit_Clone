@@ -1,7 +1,7 @@
-<div class='row p-1'>
+<div class='row p-1' id='community-page-div'>
 	<h2 class='text-danger'><%= @community.name %></h2>
 
-	<div class='col-8'>
+	<div class='col-8' id='community-list'>
 		<% if @community.posts.nil? %>
 			<p class='text-danger'>No posts yet</p>
 		<% else %>
@@ -15,7 +15,7 @@
 		<% end %>
 	</div>
 		
-	<div class='col-4 float-end'>
+	<div class='col-4 float-end' id='community-options'>
 		<div class='card m-2 mt-0 p-3'>
 			<p class='h5'>About this community</p>
 			<p class='row'><%= simple_format @community.summary %></p>

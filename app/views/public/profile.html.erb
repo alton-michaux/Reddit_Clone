@@ -1,8 +1,8 @@
 <div class='row'>
-    <div class='col-sm-8 p-3 bg-light'>
+    <div class='col-sm-8 p-3 bg-light' id='profile-posts'>
         <%= render partial: 'posts/list', locals: { posts: @posts } %>
     </div>
-    <div class='col-sm-4 p-3 bg-light'>
+    <div class='col-sm-4 p-3 bg-light profile-divs' id='profile-info'>
         <p class='h4'><%= @profile.full_name %></p>
         <p class='mt-2'><strong>Username:</strong> <%= @profile.username %></p>
         <p class='mt-2'><strong>Bio:</strong><%= simple_format @profile.bio %></p>
