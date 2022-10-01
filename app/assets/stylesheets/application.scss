@@ -40,12 +40,13 @@ a {
     text-decoration: none;
 }
 
-#navbar {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    z-index: 1001;
-}
+// #navbar {
+//     position: -webkit-sticky;
+//     position: sticky;
+//     top: 0;
+//     z-index: 1001;
+// }
+
 #trending-header {
     text-align: center;
 }
@@ -171,7 +172,7 @@ a {
     }
     
     #community-div {
-        visibility: visible;
+        display: block;
         width: 33%;
     }
 
