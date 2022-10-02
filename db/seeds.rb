@@ -33,7 +33,7 @@ Post.create(account_id: account_1.id, community_id: community_1.id, title: 'Drag
             total_comments: 0)
 Post.create(account_id: account_2.id, community_id: community_2.id, title: 'Protect the butterfly', body: "They are nature's angels that remind us what a gift it is to be alive.",
             total_comments: 0)
-Post.create(account_id: account_3.id, community_id: community_3.id, title: "Walmart", body: "Apparently running around Walmart with an alkaseltzer tab in my mouth yelling, \"the COVID vaccine doesn't work\" isn't funny?", total_comments: 0)
+Post.create(account_id: account_3.id, community_id: community_3.id, title: "You can buy Batman shampoo at Walmart", body: "But not conditioner Gordon :(", total_comments: 0)
 Post.create(account_id: account_4.id, community_id: community_4.id, title: 'Welcome Everyone', body: 'Show love to one another and enjoy the day!', total_comments: 0)
 
 puts "#{Post.count} posts created"
