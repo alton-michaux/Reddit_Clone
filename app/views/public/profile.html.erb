@@ -1,16 +1,23 @@
 <div class='row'>
-    <div class='col-sm-8 p-3 bg-light'>
+    <div class='col-sm-8 p-3 bg-light' id='profile-posts'>
         <%= render partial: 'posts/list', locals: { posts: @posts } %>
     </div>
-    <div class='col-sm-4 p-3 bg-light'>
+    <div class='col-sm-4 p-3 bg-light profile-divs' id='profile-info'>
         <p class='h4'><%= @profile.full_name %></p>
         <p class='mt-2'><strong>Username:</strong> <%= @profile.username %></p>
         <p class='mt-2'><strong>Bio:</strong><%= simple_format @profile.bio %></p>
 
         <p> <strong>Joined on:</strong> <%= @profile.created_at.strftime('%B %e, %Y')%> </p>
 
-        <% if !@profile.communities.nil? %>
+        <% unless @profile.communities.nil? %>
+            <% communities = []%>
+            <% @profile.communities.map { |community| community.account_id == @profile.id ? communities << community : next } %>
+            <% unless communities.empty? %>
+                <p class='mt-2'><strong>Admin in these communities:</strong> <%= render partial: 'communities/list', locals: { communities: communities } %></p>
+            <% end %>
             <p class='mt-2'><strong>Member in these communities:</strong> <%= render partial: 'communities/list', locals: { communities: @communities } %></p>
+        <% else %>
+            <p class='mt-2'>Hasn't joined any communities yet</p>
         <% end %>
     </div>
 </div>

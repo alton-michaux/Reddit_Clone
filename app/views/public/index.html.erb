@@ -1,50 +1,50 @@
 <% unless account_signed_in? %>
-	<div class='row text-danger mt-2'>
-		<p class='h4 text-light'>
+	<% unless @posts.nil? %>
+		<p class='h4 text-light m-4 mt-1' id="trending-header">
 			Trending: <%= Date.today.strftime('%B %e, %Y') %>
 		</p>
-		<div class='col-sm-3'>
-			Trending Topic 1
+
+		<div class='row text-danger mt-2 trending-topic'>
+			<% communities = Hash.new(0) %>
+			<% @posts.each { |post| communities[post.community_id] += 1 } %>
+			<% sorted_communities = communities.sort_by {|k,v| v}.reverse %>
+			<div class='trending-topic-topic' id="topic-1">
+				<% id1 = sorted_communities[0][0] %>
+				<% community1 = Community.find_by(id: id1) %>
+				<%= link_to community1.name, community_path(id: id1), class: 'text-danger' %>
+			</div>
+			<div class='trending-topic-topic' id="topic-2">
+				<% id2 = sorted_communities[1][0] %>
+				<% community2 = Community.find_by(id: id2) %>
+				<%= link_to community2.name, community_path(id: id2), class: 'text-danger' %>
+			</div>
+			<div class='trending-topic-topic' id="topic-3">
+				<% id3 = sorted_communities[2][0] %>
+				<% community3 = Community.find_by(id: id3) %>
+				<%= link_to community3.name, community_path(id: id3), class: 'text-danger' %>
+			</div>
 		</div>
-		<div class='col-sm-3'>
-			Trending Topic 2
-		</div>
-		<div class='col-sm-3'>
-			Trending Topic 3
-		</div>
-		<div class='col-sm-3'>
-			Trending Topic 4
-		</div>
-	</div>
+	<% else %>
+		<p class='h4 text-light m-4 mt-1' id="trending-header">
+			No Posts Yet
+		</p>
+	<% end %>
 <% end %>
-<div class='row'>
-	<div class='col p-1'>
-			<p class='h4 text-light'>
-				Recent Posts
-			</p>
-	</div>
-</div>
-<div class='row shadow-sm p-3'>
-	<div class='col-8'>
+<div class='row shadow-sm'>
+	<h2 class='h4 text-light mobile-hide'>Recent Posts</h2>
+	<div id='posts-div'>
 		<div class='card p-3 bg-light'>
 			<%= render partial: 'posts/list', locals: { posts: @posts } %>
 		</div>
 	</div>
-	<div class='col-4'>
-		<p class='h5 text-light mb-2'>Up and Coming Communities</p>
+	<div id='community-div'>
 			<div class='card'>
 				<% if !@communities.nil? %>
 					<%= render partial: 'communities/list', locals: { communities: @communities } %>
 				<% else %>
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item text-danger">An item</li>
-						<li class="list-group-item text-danger">A second item</li>
-						<li class="list-group-item text-danger">A third item</li>
-						<li class="list-group-item text-danger">A fourth item</li>
-						<li class="list-group-item text-danger">And a fifth one</li>
-					</ul>
+					<p>No Communities</p>
 				<% end %>
 			</div>
-		<%= link_to 'View All', communities_path, class: 'text-light btn btn-danger mt-4 shadow-sm' %>
+		<%= link_to 'View All Communities', communities_path, class: 'text-light btn btn-danger mt-4 shadow-sm' %>
 	</div>
 </div>

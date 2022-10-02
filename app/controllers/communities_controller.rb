@@ -45,6 +45,8 @@ class CommunitiesController < ApplicationController
     end
   end
 
+  def edit; end
+
   def destroy
     @community.destroy
     respond_to do |format|
