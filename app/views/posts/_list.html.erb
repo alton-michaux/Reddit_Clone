@@ -1,7 +1,9 @@
 <% @posts.each do |post| %>
-    <h4><%= link_to post.title, community_post_path(post.community.id, post.id), class:'text-danger text-decoration-none' %></h4>
-    <p><%= truncate post.body, length: 200 %></p>
-    <small>
-			<p class='text-dark shadow-sm p-2'>Posted in <%= link_to post.community.name.to_s, community_path(post.community.id), class:'text-danger text-decoration-none' %> by <strong><%= link_to post.account.first_name.to_s, profile_path(post.account.id), class:'text-danger text-decoration-none' %> </strong> on <%= post.created_at.strftime('%B %e, %Y')%>
-    </small>
+    <div>
+        <h4><%= link_to post.title, community_post_path(post.community.id, post.id), class:'text-danger text-decoration-none' %></h4>
+        <p><%= truncate post.body, length: 200 %></p>
+        <small>
+                <p class='text-dark shadow-sm p-2'>Posted in <%= link_to post.community.name.to_s, community_path(post.community.id), class:'text-danger text-decoration-none' %> by <strong><%= link_to post.account.first_name.to_s, profile_path(post.account.id), class:'text-danger text-decoration-none' %> </strong> on <%= post.created_at.strftime('%B %e, %Y')%>
+        </small>
+    </div>
 <% end %>

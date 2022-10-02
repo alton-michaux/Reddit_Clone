@@ -15,3 +15,188 @@
  */
 
  @import "bootstrap/scss/bootstrap";
+ 
+//  // Source mixins
+
+// // No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
+@include media-breakpoint-up(sm) { min-width: 576px }
+@include media-breakpoint-up(md) { min-width: 768px }
+@include media-breakpoint-up(lg) { min-width: 992px }
+@include media-breakpoint-up(xl) { min-width: 1200px }
+@include media-breakpoint-up(xxl) { min-width: 1400px }
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+body {
+    width: 100vw;
+}
+
+a {
+    text-decoration: none;
+}
+
+#trending-header {
+    text-align: center;
+}
+
+#community-div {
+    display: none;;
+}
+
+#link-to-communities {
+    visibility: visible;
+}
+
+#headers {
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+#topic-3 {
+    grid-column: span 2;
+}
+
+#community-page-div {
+    flex-direction: column;
+}
+
+#community-list {
+    order: 2;
+    width: 100%;
+}
+
+#community-options {
+    order: 1;
+    width: 100%;
+}
+
+#profile-posts {
+    order: 2;
+    width: 100%;
+}
+
+#profile-info {
+    order: 1;
+    width: 100%;
+}
+
+.profile-divs,
+.new-post,
+.edit-registration {
+    width: 100%;
+}
+
+.content-divs {
+    position: sticky;
+    z-index: 1;
+    justify-content: space-between;
+}
+
+.trending-topic {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: auto auto;
+    align-items: center;
+    row-gap: 15%;
+    margin: 7%;
+}
+
+.trending-topic-topic {
+    text-align: center;
+}
+
+.desktop-hide {
+    visibility: visible;
+}
+
+.mobile-hide {
+    display: none;
+}
+
+.vote-divs {
+    margin: 5%;
+}
+
+@include media-breakpoint-up(md) {
+    .trending-topic {
+        margin: 6%;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    #headers {
+        margin-right: 0;
+        margin-left: 2%;
+    }
+
+    #profile-posts {
+        order: 1;
+        width: 66%;
+    }
+
+    #profile-info {
+        order: 2;
+        width: 33%;
+    }
+    
+    #topic-3 {
+        grid-column: span 1;
+    }
+
+    #posts-div {
+        width: 66%;
+    }
+
+    #link-to-communities {
+        display: none;
+    }
+
+    #community-page-div {
+        flex-direction: row;
+    }
+    
+    #community-div {
+        display: block;
+        width: 33%;
+    }
+
+    #community-list {
+        order: 1;
+        width: 66%;
+    }
+
+    #community-options {
+        order: 2;
+        width: 33%;
+    }
+    
+    .new-post,
+    .edit-registration {
+        width: 60%;
+    }
+
+    .trending-topic {
+        grid-template-columns: auto auto auto;
+    }
+
+    .desktop-hide {
+        display: none;
+    }
+
+    .mobile-hide {
+        visibility: visible;
+    }
+
+    .vote-divs {
+        margin: 0;
+    }
+
+}
+
+@include media-breakpoint-up(xl) {
+    
+}

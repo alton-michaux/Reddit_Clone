@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 account_1 = Account.create(first_name: 'Roscoe', last_name: 'Jenkins', username: 'Joscoe31', password: 'password',
-                           bio: 'You only regret your regrets.', email: 'RosJen@job.com')
+                           bio: 'You only regret your regrets.', email: 'admin@gmail.com')
 account_2 = Account.create(first_name: 'Jillian', last_name: 'Hinrech', username: 'JillyBeans', password: 'password',
-                           bio: "I don't come here often", email: 'homegrown20@yahoo.com')
+                           bio: "I don't come here often", email: 'admin@yahoo.com')
 account_3 = Account.create(first_name: 'Finias', last_name: 'Zucchini', username: 'FucchiniOO', password: 'password',
-                           bio: "You can't fake zucchini", email: 'ObsessedWithVeggies@weirdfolk.com')
+                           bio: "You can't fake zucchini", email: 'admin@hotmail.com')
 account_4 = Account.create(first_name: 'Farrah', last_name: 'Jackson', username: 'TewCute36', password: 'password',
-                           bio: 'I literally come here everyday', email: 'all_day_bae@generic.com')
+                           bio: 'I literally come here everyday', email: 'admin@outlook.com')
 
 puts "#{Account.count} accounts created"
 
@@ -31,9 +31,9 @@ puts "#{Subscription.count} subscriptions created"
 
 Post.create(account_id: account_1.id, community_id: community_1.id, title: 'Dragons are real', body: 'One ate my sandwich yesterday and he keeps coming back to my house to mock me about it',
             total_comments: 0)
-Post.create(account_id: account_2.id, community_id: community_2.id, title: 'Do not envy the butterfly', body: 'One ate my sandwich yesterday and he keeps coming back to my house to mock me about it',
+Post.create(account_id: account_2.id, community_id: community_2.id, title: 'Protect the butterfly', body: "They are nature's angels that remind us what a gift it is to be alive.",
             total_comments: 0)
-Post.create(account_id: account_3.id, community_id: community_3.id, title: "I really don't see myself buying anything from Walmart", body: "I'd rather not get shot today", total_comments: 0)
-Post.create(account_id: account_4.id, community_id: community_4.id, title: 'Welcome Everyone~', body: 'Show love to one another and enjoy the day!', total_comments: 0)
+Post.create(account_id: account_3.id, community_id: community_3.id, title: "You can buy Batman shampoo at Walmart", body: "But not conditioner Gordon :(", total_comments: 0)
+Post.create(account_id: account_4.id, community_id: community_4.id, title: 'Welcome Everyone', body: 'Show love to one another and enjoy the day!', total_comments: 0)
 
 puts "#{Post.count} posts created"

@@ -71,6 +71,14 @@ class PostsController < ApplicationController
     redirect_to community_post_path(@post)
   end
 
+  # def trending(int)
+  #   communities = Hash.new(0)
+  #   @posts.each { |post| communities[post.community_id] += 1 }
+  #   sorted_communities = communities.sort_by {|k,v| v}.reverse
+  #   id = sorted_communities[int][0]
+  #   community = Community.find_by(id: id)
+  # end
+
   private
 
   def member?
