@@ -27,6 +27,11 @@ Subscription.create(account_id: account_2.id, community_id: community_2.id)
 Subscription.create(account_id: account_3.id, community_id: community_3.id)
 Subscription.create(account_id: account_4.id, community_id: community_4.id)
 
+FactoryBot.create_list(:subscription, 5, community_id: community_1.id)
+FactoryBot.create_list(:subscription, 2, community_id: community_2.id)
+FactoryBot.create_list(:subscription, 7, community_id: community_3.id)
+FactoryBot.create_list(:subscription, 1, community_id: community_4.id)
+
 puts "#{Subscription.count} subscriptions created"
 
 Post.create(account_id: account_1.id, community_id: community_1.id, title: 'Dragons are real', body: 'One ate my sandwich yesterday and he keeps coming back to my house to mock me about it',
