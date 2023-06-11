@@ -1,17 +1,15 @@
-<% unless account_signed_in? %>
-	<% unless @posts.nil? %>
-		<p class='h4 text-light m-4 mt-1' id="trending-header">
-			Trending: <%= Date.today.strftime('%B %e, %Y') %>
-		</p>
+<% unless @posts.nil? %>
+	<p class='h4 text-light m-4 mt-1' id="trending-header">
+		Trending: <%= Date.today.strftime('%B %e, %Y') %>
+	</p>
 
-		<div class='row text-danger mt-2 trending-topic'>
-			<%= render partial: 'trending' %>
-		</div>
-	<% else %>
-		<p class='h4 text-light m-4 mt-1' id="trending-header">
-			No Posts Yet
-		</p>
-	<% end %>
+	<div class='row text-danger mt-2 trending-topic'>
+		<%= render partial: 'trending' %>
+	</div>
+<% else %>
+	<p class='h4 text-light m-4 mt-1' id="trending-header">
+		No Posts Yet
+	</p>
 <% end %>
 <div class='row shadow-sm'>
 	<h2 class='h4 text-light mobile-hide'>Recent Posts</h2>
