@@ -5,24 +5,7 @@
 		</p>
 
 		<div class='row text-danger mt-2 trending-topic'>
-			<% communities = Hash.new(0) %>
-			<% @posts.each { |post| communities[post.community_id] += 1 } %>
-			<% sorted_communities = communities.sort_by {|k,v| v}.reverse %>
-			<div class='trending-topic-topic' id="topic-1">
-				<% id1 = sorted_communities[0][0] %>
-				<% community1 = Community.find_by(id: id1) %>
-				<%= link_to community1.name, community_path(id: id1), class: 'text-danger' %>
-			</div>
-			<div class='trending-topic-topic' id="topic-2">
-				<% id2 = sorted_communities[1][0] %>
-				<% community2 = Community.find_by(id: id2) %>
-				<%= link_to community2.name, community_path(id: id2), class: 'text-danger' %>
-			</div>
-			<div class='trending-topic-topic' id="topic-3">
-				<% id3 = sorted_communities[2][0] %>
-				<% community3 = Community.find_by(id: id3) %>
-				<%= link_to community3.name, community_path(id: id3), class: 'text-danger' %>
-			</div>
+			<%= render partial: 'trending' %>
 		</div>
 	<% else %>
 		<p class='h4 text-light m-4 mt-1' id="trending-header">
